@@ -51,7 +51,7 @@ class _MyAppTestState extends State<MyAppTest> {
       return users
           .add({
             'full_name': 'lucas',
-            'company': 'brasil',
+            'company': 'brasil  ',
             'age': '31',
           })
           .then((value) => print("User Added"))
