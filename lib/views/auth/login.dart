@@ -15,7 +15,7 @@ class _LoginViewState extends State<LoginView> {
         padding: EdgeInsets.only(
           right: 50,
           left: 50,
-          top: 150,
+          top: 60,
         ),
         child: ListView(
           children: [
@@ -29,6 +29,24 @@ class _LoginViewState extends State<LoginView> {
                   fontSize: 20,
                 ),
               ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              keyboardType: TextInputType.text,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: "Senha",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
             ),
           ],
         ),
