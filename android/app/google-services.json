@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "469765508183",
+    "project_id": "mural-estagio",
+    "storage_bucket": "mural-estagio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469765508183:android:b445d23dfb725686c5a712",
+        "android_client_info": {
+          "package_name": "com.example.mural_estagio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "469765508183-mb643hqkpjipbngaojfshpg2g8ice21n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZAebbF88IrlEWf8GnvHqnq_6HDlHrp1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "469765508183-mb643hqkpjipbngaojfshpg2g8ice21n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
