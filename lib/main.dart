@@ -50,9 +50,9 @@ class _MyAppTestState extends State<MyAppTest> {
     Future<void> addUser() {
       return users
           .add({
-            'full_name': 'lucas',
-            'company': 'brasil  ',
-            'age': '31',
+            'Nome': 'lucas',
+            'País': 'brasil  ',
+            'Idade': '31',
           })
           .then((value) => print("User Added"))
           .catchError((error) => print("Failed to add user: $error"));
