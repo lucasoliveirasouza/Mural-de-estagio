@@ -34,37 +34,3 @@ class MyApp extends StatelessWidget {
         ));
   }
 }
-
-class MyAppTest extends StatefulWidget {
-  const MyAppTest({Key? key}) : super(key: key);
-
-  @override
-  _MyAppTestState createState() => _MyAppTestState();
-}
-
-class _MyAppTestState extends State<MyAppTest> {
-  @override
-  Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
-
-    Future<void> addUser() {
-      return users
-          .add({
-            'Nome': 'lucas',
-            'País': 'brasil  ',
-            'Idade': '31',
-          })
-          .then((value) => print("User Added"))
-          .catchError((error) => print("Failed to add user: $error"));
-    }
-
-    return MaterialApp(
-        home: TextButton(
-            onPressed: () {
-              addUser();
-            },
-            child: Text(
-              "Add User",
-            )));
-  }
-}
