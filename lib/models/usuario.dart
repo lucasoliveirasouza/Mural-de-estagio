@@ -26,4 +26,15 @@ class Usuario {
   set nome(String value) {
     _nome = value;
   }
+
+  String toString() {
+    String retorno = "";
+
+    retorno += 'nome:' + _nome + ',';
+    retorno += 'email:' + _email + ',';
+    retorno += 'senha:' + _senha + ',';
+    retorno += 'funcao:' + _funcao + ',';
+
+    return retorno;
+  }
 }
