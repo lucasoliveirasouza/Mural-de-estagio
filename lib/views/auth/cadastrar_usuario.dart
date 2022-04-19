@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mural_estagio/views/auth/cadastrar_usuario.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+class CadastrarUsuarioView extends StatefulWidget {
+  const CadastrarUsuarioView({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  _CadastrarUsuarioViewState createState() => _CadastrarUsuarioViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
   final senha = TextEditingController();
   final email = TextEditingController();
 
@@ -33,7 +32,7 @@ class _LoginViewState extends State<LoginView> {
             ),
             Center(
               child: Text(
-                "Bem-vindo!",
+                "Realizar cadastro",
                 style: TextStyle(
                   fontSize: 25,
                   color: Colors.deepPurple,
@@ -80,7 +79,7 @@ class _LoginViewState extends State<LoginView> {
               height: 50,
               padding: EdgeInsets.only(right: 50, left: 50),
               child: ElevatedButton(
-                child: Text("Entrar"),
+                child: Text("Cadastrar"),
                 onPressed: () {
 
                 },
@@ -90,21 +89,16 @@ class _LoginViewState extends State<LoginView> {
               height: 20,
             ),
             Container(
-                height: 40,
-                alignment: Alignment.center,
-                child: TextButton(
-                  child: Text(
-                    "Cadastre-se",
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CadastrarUsuarioView(),
-                      ),
-                    );
-                  },
+              height: 40,
+              alignment: Alignment.center,
+              child: TextButton(
+                child: Text(
+                  "Voltar ao Login",
                 ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
             ),
           ],
         ),
