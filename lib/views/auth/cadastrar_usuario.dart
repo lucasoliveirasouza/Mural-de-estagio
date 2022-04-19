@@ -10,8 +10,12 @@ class CadastrarUsuarioView extends StatefulWidget {
 }
 
 class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
-  final senha = TextEditingController();
+  final nome = TextEditingController();
   final email = TextEditingController();
+  final senha = TextEditingController();
+  final confirmarSenha = TextEditingController();
+
+  String funcao = "Selecione uma função...";
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
         padding: EdgeInsets.only(
           right: 50,
           left: 50,
-          top: 100,
+          top: 30,
         ),
         child: ListView(
           children: [
@@ -30,7 +34,7 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
               child: Image.asset("assets/images/estagio.png"),
             ),
             SizedBox(
-              height: 20,
+              height: 15,
             ),
             Center(
               child: Text(
@@ -43,7 +47,22 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 15,
+            ),
+            TextFormField(
+              controller: nome,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                labelText: "Nome",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
             ),
             TextFormField(
               controller: email,
@@ -58,7 +77,7 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 15,
             ),
             TextFormField(
               controller: senha,
@@ -71,6 +90,50 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
                 ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            TextFormField(
+              controller: confirmarSenha,
+              keyboardType: TextInputType.text,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: "Confirmar senha",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              child: DropdownButtonFormField<String>(
+                value: funcao,
+                icon: Icon(null),
+                elevation: 15,
+                decoration: InputDecoration(
+                  labelText: 'Tipo:',
+                ),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    funcao = newValue!;
+                  });
+                },
+                items: <String>[
+                  'Selecione uma função...',
+                  'Empregador',
+                  'Estudante',
+                ].map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
               ),
             ),
             SizedBox(
@@ -88,7 +151,7 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Container(
               height: 40,
