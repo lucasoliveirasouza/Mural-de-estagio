@@ -14,4 +14,5 @@
 
 #### Descrição do projeto:
 
+Criar um projeto para que empresas consigam cadastrar vagas de estágios e estudantes consigam se candidatar a essas vagas.
 
