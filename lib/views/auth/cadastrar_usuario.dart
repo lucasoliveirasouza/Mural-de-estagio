@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class CadastrarUsuarioView extends StatefulWidget {
   const CadastrarUsuarioView({Key? key}) : super(key: key);
@@ -25,7 +27,6 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
             SizedBox(
               width: 128,
               height: 128,
-
             ),
             SizedBox(
               height: 10,
@@ -81,7 +82,8 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
               child: ElevatedButton(
                 child: Text("Cadastrar"),
                 onPressed: () {
-
+                  registrar();
+                  Navigator.of(context).pop();
                 },
               ),
             ),
@@ -104,5 +106,14 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
         ),
       ),
     );
+  }
+
+  registrar() async {
+    try {
+      await context.read<AuthService>().registrar(email.text, senha.text);
+    } on AuthException catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/services/auth_service.dart';
 import 'package:mural_estagio/views/auth/cadastrar_usuario.dart';
+import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -82,7 +84,7 @@ class _LoginViewState extends State<LoginView> {
               child: ElevatedButton(
                 child: Text("Entrar"),
                 onPressed: () {
-
+                  login();
                 },
               ),
             ),
@@ -110,5 +112,14 @@ class _LoginViewState extends State<LoginView> {
         ),
       ),
     );
+  }
+
+  login() async {
+    try {
+      await context.read<AuthService>().login(email.text, senha.text);
+    } on AuthException catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
   }
 }
