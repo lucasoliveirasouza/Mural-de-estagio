@@ -27,9 +27,10 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
             SizedBox(
               width: 128,
               height: 128,
+              child: Image.asset("assets/images/estagio.png"),
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             Center(
               child: Text(

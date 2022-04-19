@@ -28,10 +28,10 @@ class _LoginViewState extends State<LoginView> {
             SizedBox(
               width: 128,
               height: 128,
-
+              child: Image.asset("assets/images/estagio.png"),
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             Center(
               child: Text(
