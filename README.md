@@ -1,6 +1,6 @@
 # Mural de estágio
 
-### Contatos:
+#### Contatos:
 
 <div>
 <a href="https://instagram.com/lucas.olisouza" target="_blank"><img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
@@ -12,7 +12,6 @@
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" width="40" height="40"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" width="40" height="40"/>
 
-
-
+#### Descrição do projeto:
 
 
