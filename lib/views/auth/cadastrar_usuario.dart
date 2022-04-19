@@ -20,7 +20,7 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
         padding: EdgeInsets.only(
           right: 50,
           left: 50,
-          top: 60,
+          top: 100,
         ),
         child: ListView(
           children: [
@@ -73,7 +73,6 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
                 ),
               ),
             ),
-
             SizedBox(
               height: 30,
             ),

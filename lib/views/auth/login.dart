@@ -21,7 +21,7 @@ class _LoginViewState extends State<LoginView> {
         padding: EdgeInsets.only(
           right: 50,
           left: 50,
-          top: 60,
+          top: 100,
         ),
         child: ListView(
           children: [
@@ -74,7 +74,6 @@ class _LoginViewState extends State<LoginView> {
                 ),
               ),
             ),
-
             SizedBox(
               height: 30,
             ),
@@ -92,21 +91,21 @@ class _LoginViewState extends State<LoginView> {
               height: 20,
             ),
             Container(
-                height: 40,
-                alignment: Alignment.center,
-                child: TextButton(
-                  child: Text(
-                    "Cadastre-se",
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CadastrarUsuarioView(),
-                      ),
-                    );
-                  },
+              height: 40,
+              alignment: Alignment.center,
+              child: TextButton(
+                child: Text(
+                  "Cadastre-se",
                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CadastrarUsuarioView(),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
