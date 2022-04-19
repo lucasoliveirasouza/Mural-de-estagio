@@ -26,6 +26,4 @@ class Usuario {
   set nome(String value) {
     _nome = value;
   }
-
-
 }
