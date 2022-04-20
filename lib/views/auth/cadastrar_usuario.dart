@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mural_estagio/services/auth_service.dart';
+import 'package:mural_estagio/widgets/form_field_padrao.dart';
 import 'package:provider/provider.dart';
 
 class CadastrarUsuarioView extends StatefulWidget {
@@ -49,32 +50,16 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
             SizedBox(
               height: 15,
             ),
-            TextFormField(
-              controller: nome,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                labelText: "Nome",
-                labelStyle: TextStyle(
-                  color: Colors.black38,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
+            FormFieldPadrao(
+              controle: nome,
+              title: "Nome",
             ),
             SizedBox(
               height: 15,
             ),
-            TextFormField(
-              controller: email,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                labelText: "E-mail",
-                labelStyle: TextStyle(
-                  color: Colors.black38,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
+            FormFieldPadrao(
+              controle: email,
+              title: "E-mail",
             ),
             SizedBox(
               height: 15,
