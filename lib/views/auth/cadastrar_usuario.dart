@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/models/usuario.dart';
 import 'package:mural_estagio/services/auth_service.dart';
+import 'package:mural_estagio/services/usuario_service.dart';
 import 'package:mural_estagio/widgets/form_field_padrao.dart';
 import 'package:provider/provider.dart';
 
@@ -131,6 +133,11 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
                 child: Text("Cadastrar"),
                 onPressed: () {
                   registrar();
+                  Usuario usuario =
+                      Usuario(nome.text, email.text, senha.text, funcao);
+                  print(usuario);
+                  UsuarioService().cadastrarUsuario(usuario);
+
                   Navigator.of(context).pop();
                 },
               ),
