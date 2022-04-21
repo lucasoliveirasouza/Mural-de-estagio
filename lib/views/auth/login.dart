@@ -65,6 +65,11 @@ class _LoginViewState extends State<LoginView> {
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
                 ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    new Radius.circular(10.0),
+                  ),
+                ),
               ),
             ),
             SizedBox(

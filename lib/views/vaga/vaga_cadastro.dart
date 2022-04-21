@@ -55,6 +55,7 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
                 },
               ),
             ),
+
             TextFormField(
               maxLines: 6,
               controller: descricao,
@@ -64,6 +65,11 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    new Radius.circular(10.0),
+                  ),
                 ),
               ),
             ),

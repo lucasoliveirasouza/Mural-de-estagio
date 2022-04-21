@@ -21,6 +21,11 @@ class FormFieldPadrao extends StatelessWidget {
           fontWeight: FontWeight.w400,
           fontSize: 20,
         ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            new Radius.circular(10.0),
+          ),
+        ),
       ),
       style: TextStyle(
         fontSize: 20,

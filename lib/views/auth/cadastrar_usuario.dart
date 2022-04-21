@@ -80,6 +80,11 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
                 ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    new Radius.circular(10.0),
+                  ),
+                ),
               ),
             ),
             SizedBox(
@@ -95,6 +100,11 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    new Radius.circular(10.0),
+                  ),
                 ),
               ),
             ),
@@ -125,6 +135,7 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
                   );
                 }).toList(),
               ),
+
             ),
             SizedBox(
               height: 15,
