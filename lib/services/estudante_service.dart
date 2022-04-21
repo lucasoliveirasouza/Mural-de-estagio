@@ -1,26 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mural_estagio/models/estudante.dart';
 import 'package:mural_estagio/models/usuario.dart';
-import 'package:mural_estagio/services/estudante_service.dart';
 
-class UsuarioService {
-  String? cadastrarUsuario(Usuario usuario) {
+class EstudanteService {
+  String? cadastrarUsuario(Estudante estudante) {
     try {
-      print("CADASTRADO");
-      CollectionReference usuarios =
-          FirebaseFirestore.instance.collection('usuarios');
-      usuarios.add({
-        'nome': usuario.nome,
-        'email': usuario.email,
-        'funcao': usuario.funcao,
-        'endereco': usuario.endereco,
-        'telefone': usuario.telefone,
+      CollectionReference estudantes =
+      FirebaseFirestore.instance.collection('estudantes');
+      estudantes.add({
+        'nome': estudante.nome,
+        'email': estudante.email,
+        'funcao': estudante.funcao,
+        'endereco': estudante.endereco,
+        'telefone': estudante.telefone,
+        'instituicao': estudante.instituicao,
+        'curso': estudante.curso,
+        'areaInteresse': estudante.areaInteresse,
+        'miniCurriculo': estudante.miniCurriculo,
       });
 
-      if(usuario.funcao == "Estudante"){
-        Estudante estudante = Estudante("", usuario.nome, usuario.email, "", usuario.funcao, usuario.endereco, usuario.telefone, "", "", "", "");
-        EstudanteService().cadastrarUsuario(estudante);
-      }
       return "Cadastrado com sucesso!";
     } on FirebaseException catch (e) {
       return e.toString();
@@ -43,7 +41,7 @@ class UsuarioService {
         }
       });
     }on FirebaseException catch (e) {
-       print(e.toString());
+      print(e.toString());
     }
     return usuario;
   }

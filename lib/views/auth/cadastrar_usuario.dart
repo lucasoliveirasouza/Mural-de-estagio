@@ -17,6 +17,8 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
   final email = TextEditingController();
   final senha = TextEditingController();
   final confirmarSenha = TextEditingController();
+  final endereco = TextEditingController();
+  final telefone = TextEditingController();
 
   String funcao = "Selecione uma função...";
 
@@ -124,6 +126,20 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
               ),
             ),
             SizedBox(
+              height: 15,
+            ),
+            FormFieldPadrao(
+              controle: endereco,
+              title: "Endereço",
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            FormFieldPadrao(
+              controle: telefone,
+              title: "Telefone",
+            ),
+            SizedBox(
               height: 30,
             ),
             Container(
@@ -134,7 +150,7 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
                 onPressed: () {
                   registrar();
                   Usuario usuario =
-                      Usuario("",nome.text, email.text, senha.text, funcao);
+                      Usuario("",nome.text, email.text, senha.text, funcao,endereco.text,telefone.text);
                   print(usuario);
                   UsuarioService().cadastrarUsuario(usuario);
 

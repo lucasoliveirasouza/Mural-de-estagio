@@ -1,7 +1,8 @@
 class Usuario {
-  late String _nome, _email, _senha, _funcao, _id;
 
-  Usuario(this._id,this._nome, this._email, this._senha, this._funcao);
+  late String _id, _nome, _email, _senha, _funcao, _endereco,_telefone;
+
+  Usuario(this._id,this._nome, this._email, this._senha, this._funcao, this._endereco,this._telefone);
 
   get id => _id;
 
@@ -15,8 +16,9 @@ class Usuario {
     _funcao = value;
   }
 
+  get senha => _senha;
 
-  void senha(String value) {
+  void setSenha(String value) {
     _senha = value;
   }
 
@@ -32,18 +34,17 @@ class Usuario {
     _nome = value;
   }
 
-  String toString() {
-    String retorno = "";
+  get endereco => _endereco;
 
-    retorno += 'nome:' + _nome + ',';
-    retorno += 'email:' + _email + ',';
-    retorno += 'senha:' + _senha + ',';
-    retorno += 'funcao:' + _funcao + ',';
-
-    return retorno;
+  void setEndereco(value) {
+    _endereco = value;
   }
 
+  get telefone => _telefone;
 
+  void setTelefone(value) {
+    _telefone = value;
+  }
 
 
 }
