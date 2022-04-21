@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:mural_estagio/services/auth_service.dart';
 import 'package:mural_estagio/views/empresa/empresa_lista.dart';
 import 'package:mural_estagio/views/interesse/interesse_lista.dart';
@@ -47,11 +48,11 @@ class _HomeViewState extends State<HomeView> {
               label: "Início"
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.search),
+              icon: Icon(Icons.domain),
               label: "Empresas"
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.grid_on),
+              icon: Icon(Icons.text_snippet_outlined),
               label: "Interesses"
           ),
           BottomNavigationBarItem(
