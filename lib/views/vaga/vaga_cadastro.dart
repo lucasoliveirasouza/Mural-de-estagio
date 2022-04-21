@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/views/vaga/vaga_lista.dart';
+import 'package:mural_estagio/widgets/botao_padrao.dart';
 import 'package:mural_estagio/widgets/form_field_padrao.dart';
 
 class VagaCadastroView extends StatefulWidget {
@@ -23,7 +25,6 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
         padding: EdgeInsets.all(15),
         child: ListView(
           children: [
-
             TextFormField(
               maxLines: 6,
               controller: descricao,
@@ -49,6 +50,15 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
             FormFieldPadrao(
               controle: horasSemanais,
               title: "Quantidade de horas semanais",
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            BotaoPadrao(
+              titulo: "Cadastrar",
+              onTap: () {
+                Navigator.of(context).pop();
+              },
             ),
           ],
         ),
