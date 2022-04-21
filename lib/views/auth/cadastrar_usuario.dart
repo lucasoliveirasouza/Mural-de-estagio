@@ -134,7 +134,7 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
                 onPressed: () {
                   registrar();
                   Usuario usuario =
-                      Usuario(nome.text, email.text, senha.text, funcao);
+                      Usuario("",nome.text, email.text, senha.text, funcao);
                   print(usuario);
                   UsuarioService().cadastrarUsuario(usuario);
 

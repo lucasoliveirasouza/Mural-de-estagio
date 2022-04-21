@@ -1,29 +1,34 @@
 class Usuario {
-  late String _nome, _email, _senha, _funcao;
+  late String _nome, _email, _senha, _funcao, _id;
 
-  Usuario(this._nome, this._email, this._senha, this._funcao);
+  Usuario(this._id,this._nome, this._email, this._senha, this._funcao);
+
+  get id => _id;
+
+  void setId(value) {
+    _id = value;
+  }
 
   get funcao => _funcao;
 
-  set funcao(value) {
+  void setFuncao(String value) {
     _funcao = value;
   }
 
-  get senha => _senha;
 
-  set senha(value) {
+  void senha(String value) {
     _senha = value;
   }
 
   get email => _email;
 
-  set email(value) {
+  void setEmail(String value) {
     _email = value;
   }
 
   String get nome => _nome;
 
-  set nome(String value) {
+  void setNome(String value) {
     _nome = value;
   }
 
@@ -37,4 +42,8 @@ class Usuario {
 
     return retorno;
   }
+
+
+
+
 }

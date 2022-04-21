@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/models/usuario.dart';
 import 'package:mural_estagio/services/auth_service.dart';
+import 'package:mural_estagio/services/usuario_service.dart';
 
 class SobreView extends StatefulWidget {
   const SobreView({Key? key}) : super(key: key);
@@ -9,8 +12,13 @@ class SobreView extends StatefulWidget {
 }
 
 class _SobreViewState extends State<SobreView> {
+  FirebaseAuth auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
+
+    final usuario = UsuarioService().getUser(auth.currentUser!.email.toString());
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Sobre"),
@@ -34,11 +42,27 @@ class _SobreViewState extends State<SobreView> {
             ),
             Container(
               child: Center(
-                child: Text(
-                  "Lucas Oliveira",
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
+                child: FutureBuilder(
+                  future: usuario,
+                  builder:
+                      (BuildContext context, AsyncSnapshot<Usuario?> snapshot) {
+                    if (snapshot.hasData) {
+
+                      return Text(
+                        snapshot.data?.nome ?? "",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      );
+                    } else {
+                      return Text(
+                        "",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      );
+                    }
+                  },
                 ),
               ),
             ),
