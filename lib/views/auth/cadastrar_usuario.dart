@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/models/usuario.dart';
 import 'package:mural_estagio/services/auth_service.dart';
+import 'package:mural_estagio/services/usuario_service.dart';
+import 'package:mural_estagio/widgets/form_field_padrao.dart';
 import 'package:provider/provider.dart';
 
 class CadastrarUsuarioView extends StatefulWidget {
@@ -10,8 +13,14 @@ class CadastrarUsuarioView extends StatefulWidget {
 }
 
 class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
-  final senha = TextEditingController();
+  final nome = TextEditingController();
   final email = TextEditingController();
+  final senha = TextEditingController();
+  final confirmarSenha = TextEditingController();
+  final endereco = TextEditingController();
+  final telefone = TextEditingController();
+
+  String funcao = "Selecione uma função...";
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +29,7 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
         padding: EdgeInsets.only(
           right: 50,
           left: 50,
-          top: 100,
+          top: 30,
         ),
         child: ListView(
           children: [
@@ -30,7 +39,7 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
               child: Image.asset("assets/images/estagio.png"),
             ),
             SizedBox(
-              height: 20,
+              height: 15,
             ),
             Center(
               child: Text(
@@ -43,22 +52,21 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 15,
             ),
-            TextFormField(
-              controller: email,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                labelText: "E-mail",
-                labelStyle: TextStyle(
-                  color: Colors.black38,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
+            FormFieldPadrao(
+              controle: nome,
+              title: "Nome",
             ),
             SizedBox(
-              height: 20,
+              height: 15,
+            ),
+            FormFieldPadrao(
+              controle: email,
+              title: "E-mail",
+            ),
+            SizedBox(
+              height: 15,
             ),
             TextFormField(
               controller: senha,
@@ -74,6 +82,64 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
               ),
             ),
             SizedBox(
+              height: 15,
+            ),
+            TextFormField(
+              controller: confirmarSenha,
+              keyboardType: TextInputType.text,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: "Confirmar senha",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              child: DropdownButtonFormField<String>(
+                value: funcao,
+                icon: Icon(null),
+                elevation: 15,
+                decoration: InputDecoration(
+                  labelText: 'Tipo:',
+                ),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    funcao = newValue!;
+                  });
+                },
+                items: <String>[
+                  'Selecione uma função...',
+                  'Empregador',
+                  'Estudante',
+                ].map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            FormFieldPadrao(
+              controle: endereco,
+              title: "Endereço",
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            FormFieldPadrao(
+              controle: telefone,
+              title: "Telefone",
+            ),
+            SizedBox(
               height: 30,
             ),
             Container(
@@ -83,12 +149,17 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
                 child: Text("Cadastrar"),
                 onPressed: () {
                   registrar();
+                  Usuario usuario =
+                      Usuario("",nome.text, email.text, senha.text, funcao,endereco.text,telefone.text);
+                  print(usuario);
+                  UsuarioService().cadastrarUsuario(usuario);
+
                   Navigator.of(context).pop();
                 },
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Container(
               height: 40,

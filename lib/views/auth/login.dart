@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mural_estagio/services/auth_service.dart';
 import 'package:mural_estagio/views/auth/cadastrar_usuario.dart';
+import 'package:mural_estagio/widgets/form_field_padrao.dart';
 import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
@@ -46,17 +47,9 @@ class _LoginViewState extends State<LoginView> {
             SizedBox(
               height: 20,
             ),
-            TextFormField(
-              controller: email,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                labelText: "E-mail",
-                labelStyle: TextStyle(
-                  color: Colors.black38,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
+            FormFieldPadrao(
+              controle: email,
+              title: "E-mail",
             ),
             SizedBox(
               height: 20,
