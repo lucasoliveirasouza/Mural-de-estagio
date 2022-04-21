@@ -1,4 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/models/usuario.dart';
+import 'package:mural_estagio/models/vaga.dart';
+import 'package:mural_estagio/services/usuario_service.dart';
+import 'package:mural_estagio/services/vaga_service.dart';
 import 'package:mural_estagio/views/vaga/vaga_lista.dart';
 import 'package:mural_estagio/widgets/botao_padrao.dart';
 import 'package:mural_estagio/widgets/form_field_padrao.dart';
@@ -11,12 +16,18 @@ class VagaCadastroView extends StatefulWidget {
 }
 
 class _VagaCadastroViewState extends State<VagaCadastroView> {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  String idUsuario = "";
+  String nomeUsuario = "";
   final descricao = TextEditingController();
   final remuneracao = TextEditingController();
   final horasSemanais = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final usuario =
+        UsuarioService().getUser(auth.currentUser!.email.toString());
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Cadastrar vaga"),
@@ -25,6 +36,25 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
         padding: EdgeInsets.all(15),
         child: ListView(
           children: [
+            Center(
+              child: FutureBuilder(
+                future: usuario,
+                builder:
+                    (BuildContext context, AsyncSnapshot<Usuario?> snapshot) {
+                  if (snapshot.hasData) {
+                    idUsuario = snapshot.data?.id ?? "";
+                    nomeUsuario = snapshot.data?.nome ?? "";
+                    return Text(
+                      "",
+                    );
+                  } else {
+                    return Text(
+                      "",
+                    );
+                  }
+                },
+              ),
+            ),
             TextFormField(
               maxLines: 6,
               controller: descricao,
@@ -57,6 +87,15 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
             BotaoPadrao(
               titulo: "Cadastrar",
               onTap: () {
+                Vaga vaga = Vaga(
+                    idUsuario,
+                    nomeUsuario,
+                    descricao.text,
+                    double.parse(remuneracao.text),
+                    int.parse(horasSemanais.text));
+                VagaService().cadastrarVaga(vaga);
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text("Vaga cadastrada!")));
                 Navigator.of(context).pop();
               },
             ),

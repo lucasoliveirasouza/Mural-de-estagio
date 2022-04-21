@@ -16,9 +16,9 @@ class _SobreViewState extends State<SobreView> {
 
   @override
   Widget build(BuildContext context) {
-
-    final usuario = UsuarioService().getUser(auth.currentUser!.email.toString());
-
+    final usuario =
+        UsuarioService().getUser(auth.currentUser!.email.toString());
+    
     return Scaffold(
       appBar: AppBar(
         title: Text("Sobre"),
@@ -47,7 +47,6 @@ class _SobreViewState extends State<SobreView> {
                   builder:
                       (BuildContext context, AsyncSnapshot<Usuario?> snapshot) {
                     if (snapshot.hasData) {
-
                       return Text(
                         snapshot.data?.nome ?? "",
                         style: TextStyle(
@@ -91,6 +90,7 @@ class _SobreViewState extends State<SobreView> {
               child: Center(
                 child: IconButton(
                   onPressed: () {
+
                     AuthService().logout();
                   },
                   icon: Icon(

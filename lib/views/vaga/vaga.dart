@@ -10,6 +10,7 @@ class VagaView extends StatefulWidget {
 class _VagaViewState extends State<VagaView> {
   @override
   Widget build(BuildContext context) {
+
     return Container();
   }
 }

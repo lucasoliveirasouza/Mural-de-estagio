@@ -2,11 +2,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mural_estagio/models/vaga.dart';
 
-class UsuarioService {
+class VagaService {
 
-  String? cadastrarUsuario(Vaga vaga) {
+  String? cadastrarVaga(Vaga vaga) {
     try {
-      print("CADASTRADO");
       CollectionReference vagas =
       FirebaseFirestore.instance.collection('vagas');
       vagas.add({
