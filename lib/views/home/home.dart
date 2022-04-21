@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:mural_estagio/services/auth_service.dart';
-import 'package:mural_estagio/views/empresa/empresa_lista.dart';
 import 'package:mural_estagio/views/interesse/interesse_lista.dart';
 import 'package:mural_estagio/views/sobre/sobre.dart';
 import 'package:mural_estagio/views/vaga/vaga_lista.dart';
@@ -20,7 +17,6 @@ class _HomeViewState extends State<HomeView> {
 
   final List<Widget> _telas = [
     VagaListaView(),
-    EmpresaListaView(),
     InteresseListaView (),
     SobreView(),
   ];
@@ -46,10 +42,6 @@ class _HomeViewState extends State<HomeView> {
 
               icon: Icon(Icons.home),
               label: "Início"
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.domain),
-              label: "Empresas"
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.text_snippet_outlined),
