@@ -66,7 +66,6 @@ class _SobreViewState extends State<SobreView> {
             Container(
               child: Center(
                 child: IconButton(
-                  color: Colors.deepPurple,
                   onPressed: () {
                     AuthService().logout();
                   },
