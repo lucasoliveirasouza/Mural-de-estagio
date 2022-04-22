@@ -32,7 +32,7 @@ class _VagaListaViewState extends State<VagaListaView> {
                     children: [
                       Container(
                         child: Card(
-                          color: Colors.grey.shade200,
+                          color: Colors.deepPurple.shade50,
                           shape: RoundedRectangleBorder(
                             side: BorderSide(
                               color: Colors.deepPurple,
