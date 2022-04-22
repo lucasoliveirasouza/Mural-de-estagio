@@ -19,4 +19,21 @@ class VagaService {
       return e.toString();
     }
   }
+
+  Future<List<Vaga?>?> getAll() async {
+    List<Vaga> vagas = [];
+    try {
+      QuerySnapshot snapshot =
+          await FirebaseFirestore.instance.collection('vagas').get();
+      snapshot.docs.forEach((d) {
+        Vaga vaga = Vaga(d.id, d["idEmpresa"], d["nomeEmpresa"],
+            d["descricaoVaga"], d["remuneracao"], d["horasSemanais"]);
+        vagas.add(vaga);
+      });
+      return vagas;
+    } on FirebaseException catch (e) {
+      print(e.toString());
+    }
+    return vagas;
+  }
 }

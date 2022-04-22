@@ -1,10 +1,17 @@
 class Vaga {
+  late String _id;
   late String _idEmpresa, _nomeEmpresa, _descricaoVaga;
   late double _remuneracao;
   late int _horasSemanais;
 
-  Vaga(this._idEmpresa, this._nomeEmpresa, this._descricaoVaga,
+  Vaga(this._id, this._idEmpresa, this._nomeEmpresa, this._descricaoVaga,
       this._remuneracao, this._horasSemanais);
+
+  String get id => _id;
+
+  set id(String value) {
+    _id = value;
+  }
 
   int get horasSemanais => _horasSemanais;
 

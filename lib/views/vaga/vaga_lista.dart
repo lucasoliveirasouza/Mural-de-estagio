@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/models/vaga.dart';
+import 'package:mural_estagio/services/vaga_service.dart';
 import 'package:mural_estagio/views/vaga/vaga_cadastro.dart';
 
 class VagaListaView extends StatefulWidget {
@@ -11,22 +13,82 @@ class VagaListaView extends StatefulWidget {
 class _VagaListaViewState extends State<VagaListaView> {
   @override
   Widget build(BuildContext context) {
+    Future<List<Vaga?>?> futureList = VagaService().getAll();
     return Scaffold(
       appBar: AppBar(
         title: Text("Lista de vagas"),
       ),
       body: Container(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.only(right: 15, left: 15, top: 10),
+        child: FutureBuilder(
+            future: futureList,
+            builder:
+                (BuildContext context, AsyncSnapshot<List<Vaga?>?> snapshot) {
+              return ListView.builder(
+                itemCount: snapshot.data?.length ?? 0,
+                shrinkWrap: true,
+                itemBuilder: ((context, index) {
+                  return Column(
+                    children: [
+                      Container(
+                        child: Card(
+                          color: Colors.grey.shade200,
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Colors.deepPurple,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: [
+                              ListTile(
+                                title: Text(
+                                  snapshot.data![index]!.nomeEmpresa,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                leading: Icon(
+                                  Icons.account_circle,
+                                  size: 40,
+                                  color: Colors.deepPurple,
+                                ),
+                                subtitle: Text("Valor: RS " +
+                                    snapshot.data![index]!.remuneracao
+                                        .toString()),
+                                onTap: () {},
+                              ),
+                              Divider(
+                                color: Colors.deepPurple,
+                              ),
+                              ListTile(
+                                title: Text(
+                                  snapshot.data![index]!.descricaoVaga,
+                                ),
+                                onTap: () {},
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      )
+                    ],
+                  );
+                }),
+              );
+            }),
       ),
-
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: (){
+        onPressed: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => VagaCadastroView(),
-              ),
+            context,
+            MaterialPageRoute(
+              builder: (context) => VagaCadastroView(),
+            ),
           );
         },
       ),

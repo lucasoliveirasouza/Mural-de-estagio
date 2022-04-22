@@ -55,7 +55,6 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
                 },
               ),
             ),
-
             TextFormField(
               maxLines: 6,
               controller: descricao,
@@ -94,6 +93,7 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
               titulo: "Cadastrar",
               onTap: () {
                 Vaga vaga = Vaga(
+                    "",
                     idUsuario,
                     nomeUsuario,
                     descricao.text,
