@@ -1,5 +1,4 @@
-
-class Vaga{
+class Vaga {
   late String _idEmpresa, _nomeEmpresa, _descricaoVaga;
   late double _remuneracao;
   late int _horasSemanais;
@@ -35,5 +34,17 @@ class Vaga{
 
   void setIdEmpresa(String value) {
     _idEmpresa = value;
+  }
+
+  String toString() {
+    String retorno = "";
+
+    retorno += 'idEmpresa:' + _idEmpresa + ',';
+    retorno += 'nomeEmpresa:' + _nomeEmpresa + ',';
+    retorno += 'descricaoVaga:' + _descricaoVaga + ',';
+    retorno += 'remuneracao:' + _remuneracao.toString() + ',';
+    retorno += 'horasSemanais:' + _horasSemanais.toString() + ',';
+
+    return retorno;
   }
 }
