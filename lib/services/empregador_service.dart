@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mural_estagio/models/empregador.dart';
 
-import 'package:mural_estagio/models/usuario.dart';
 
 class EmpregadorService {
   String? cadastrarUsuario(Empregador empregador) {
@@ -23,5 +22,48 @@ class EmpregadorService {
       return e.toString();
     }
   }
+  Future<Empregador?> getEmpregador(email) async {
+    Empregador empregador = Empregador("", "", "", "", "","","","");
+    try{
+      QuerySnapshot snapshot =
+      await FirebaseFirestore.instance.collection('empregadores').get();
+      snapshot.docs.forEach((d) {
+        if (d['email'] == email) {
+          empregador.setId(d.id);
+          empregador.setNome(d['nome']);
+          empregador.setEmail(d['email']);
+          empregador.setFuncao(d['funcao']);
+          empregador.setEndereco(d['endereco']);
+          empregador.setTelefone(d['telefone']);
 
+        }
+      });
+    }on FirebaseException catch (e) {
+      print(e.toString());
+    }
+    return empregador;
+  }
+
+  Future<Empregador?> findById(id) async {
+    Empregador empregador = Empregador("", "", "", "", "","","","");
+    try{
+      QuerySnapshot snapshot =
+      await FirebaseFirestore.instance.collection('empregadores').get();
+      snapshot.docs.forEach((d) {
+        if (d.id == id) {
+          empregador.setId(d.id);
+          empregador.setNome(d['nome']);
+          empregador.setEmail(d['email']);
+          empregador.setFuncao(d['funcao']);
+          empregador.setEndereco(d['endereco']);
+          empregador.setTelefone(d['telefone']);
+
+        }
+      });
+    }on FirebaseException catch (e) {
+      print(e.toString());
+    }
+    print(empregador.nome);
+    return empregador;
+  }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/models/empregador.dart';
 import 'package:mural_estagio/models/usuario.dart';
 import 'package:mural_estagio/models/vaga.dart';
+import 'package:mural_estagio/services/empregador_service.dart';
 import 'package:mural_estagio/services/usuario_service.dart';
 import 'package:mural_estagio/widgets/botao_padrao.dart';
 
@@ -19,8 +21,7 @@ class _VagaViewState extends State<VagaView> {
   Widget build(BuildContext context) {
 
 
-    final usuario = UsuarioService().getFindById(widget.vaga.idEmpresa);
-
+    final empregador = EmpregadorService().findById(widget.vaga.idEmpresa);
     return Scaffold(
       appBar: AppBar(
         title: Text("Detalhes da vaga"),
@@ -42,9 +43,9 @@ class _VagaViewState extends State<VagaView> {
                 title: Text("Empresa: " + widget.vaga.nomeEmpresa),
               ),
               FutureBuilder(
-                future: usuario,
+                future: empregador,
                 builder:
-                    (BuildContext context, AsyncSnapshot<Usuario?> snapshot) {
+                    (BuildContext context, AsyncSnapshot<Empregador?> snapshot) {
                   if (snapshot.hasData) {
                     return ListTile(
                       title: Text("Endereço: " + snapshot.data?.endereco),
@@ -58,9 +59,9 @@ class _VagaViewState extends State<VagaView> {
                 },
               ),
               FutureBuilder(
-                future: usuario,
+                future: empregador,
                 builder:
-                    (BuildContext context, AsyncSnapshot<Usuario?> snapshot) {
+                    (BuildContext context, AsyncSnapshot<Empregador?> snapshot) {
                   if (snapshot.hasData) {
                     return ListTile(
                       title: Text("Email: " + snapshot.data?.email),
