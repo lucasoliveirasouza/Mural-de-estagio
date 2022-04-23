@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mural_estagio/models/vaga.dart';
+import 'package:mural_estagio/widgets/botao_padrao.dart';
 
 class VagaView extends StatefulWidget {
   Vaga vaga;
@@ -18,7 +19,7 @@ class _VagaViewState extends State<VagaView> {
         title: Text("Detalhes da vaga"),
       ),
       body: Container(
-        padding: EdgeInsets.all(13),
+        padding: EdgeInsets.only(top: 20,left: 10, right: 10),
         child: ListView(
           children: [
             Center(
@@ -39,6 +40,11 @@ class _VagaViewState extends State<VagaView> {
             ),
             ListTile(
               title: Text("Horas semanais: " + widget.vaga.horasSemanais.toString()),
+            ),
+            BotaoPadrao(titulo: "Candidatar",
+                onTap: (){
+
+                }
             ),
           ],
         )
