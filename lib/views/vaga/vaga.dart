@@ -18,9 +18,16 @@ class _VagaViewState extends State<VagaView> {
         title: Text("Detalhes da vaga"),
       ),
       body: Container(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(13),
         child: ListView(
           children: [
+            Center(
+              child: Text("Oportunidade de estágio:",
+              style: TextStyle(
+                fontSize: 25,
+              ),
+              ),
+            ),
             ListTile(
               title: Text("Empresa: " + widget.vaga.nomeEmpresa),
             ),
