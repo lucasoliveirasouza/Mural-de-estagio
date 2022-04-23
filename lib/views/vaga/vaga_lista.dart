@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mural_estagio/models/vaga.dart';
 import 'package:mural_estagio/services/vaga_service.dart';
+import 'package:mural_estagio/views/vaga/vaga.dart';
 import 'package:mural_estagio/views/vaga/vaga_cadastro.dart';
 
 class VagaListaView extends StatefulWidget {
@@ -57,7 +58,9 @@ class _VagaListaViewState extends State<VagaListaView> {
                                 subtitle: Text("Valor: RS " +
                                     snapshot.data![index]!.remuneracao
                                         .toString()),
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => VagaView(vaga: snapshot.data![index]!)));
+                                },
                               ),
                               Divider(
                                 color: Colors.deepPurple,
@@ -66,7 +69,9 @@ class _VagaListaViewState extends State<VagaListaView> {
                                 title: Text(
                                   snapshot.data![index]!.descricaoVaga,
                                 ),
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => VagaView(vaga: snapshot.data![index]!)));
+                                },
                               ),
                             ],
                           ),
