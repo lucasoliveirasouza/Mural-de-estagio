@@ -63,7 +63,6 @@ class EmpregadorService {
     }on FirebaseException catch (e) {
       print(e.toString());
     }
-    print(empregador.nome);
     return empregador;
   }
 }

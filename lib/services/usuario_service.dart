@@ -19,11 +19,13 @@ class UsuarioService {
         'telefone': usuario.telefone,
       });
 
-      if(usuario.funcao == "Estudante"){
-        Estudante estudante = Estudante("", usuario.nome, usuario.email, "", usuario.funcao, usuario.endereco, usuario.telefone, "", "", "", "");
+      if (usuario.funcao == "Estudante") {
+        Estudante estudante = Estudante("", usuario.nome, usuario.email, "",
+            usuario.funcao, usuario.endereco, usuario.telefone, "", "", "", "");
         EstudanteService().cadastrarUsuario(estudante);
-      }else if(usuario.funcao == "Empregador"){
-        Empregador empregador = Empregador("", usuario.nome, usuario.email, "", usuario.funcao, usuario.endereco, usuario.telefone, "");
+      } else if (usuario.funcao == "Empregador") {
+        Empregador empregador = Empregador("", usuario.nome, usuario.email, "",
+            usuario.funcao, usuario.endereco, usuario.telefone, "");
         EmpregadorService().cadastrarUsuario(empregador);
       }
       return "Cadastrado com sucesso!";
@@ -33,10 +35,10 @@ class UsuarioService {
   }
 
   Future<Usuario?> getUser(email) async {
-    Usuario usuario = Usuario("", "", "", "", "","","");
-    try{
+    Usuario usuario = Usuario("", "", "", "", "", "", "");
+    try {
       QuerySnapshot snapshot =
-      await FirebaseFirestore.instance.collection('usuarios').get();
+          await FirebaseFirestore.instance.collection('usuarios').get();
       snapshot.docs.forEach((d) {
         if (d['email'] == email) {
           usuario.setId(d.id);
@@ -47,10 +49,9 @@ class UsuarioService {
           usuario.setTelefone(d['telefone']);
         }
       });
-    }on FirebaseException catch (e) {
-       print(e.toString());
+    } on FirebaseException catch (e) {
+      print(e.toString());
     }
     return usuario;
   }
-
 }
