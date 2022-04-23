@@ -24,24 +24,4 @@ class EmpregadorService {
     }
   }
 
-  Future<Usuario?> getUser(email) async {
-    Usuario usuario = Usuario("", "", "", "", "","","");
-    try{
-      QuerySnapshot snapshot =
-      await FirebaseFirestore.instance.collection('usuarios').get();
-      snapshot.docs.forEach((d) {
-        if (d['email'] == email) {
-          usuario.setId(d.id);
-          usuario.setNome(d['nome']);
-          usuario.setEmail(d['email']);
-          usuario.setFuncao(d['funcao']);
-          usuario.setEndereco(d['endereco']);
-          usuario.setTelefone(d['telefone']);
-        }
-      });
-    }on FirebaseException catch (e) {
-      print(e.toString());
-    }
-    return usuario;
-  }
 }
