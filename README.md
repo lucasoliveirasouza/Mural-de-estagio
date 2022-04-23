@@ -17,4 +17,5 @@
 
 * O sistema deve disponibilizar cadastro para perfil de Estudante e Empregador;
 * O Empregador pode ter a opção de cadastro de vaga de estágio;
-* O Estagiário pode se candidatar a uma vaga de estágio;
+* O Estudante pode se candidatar a uma vaga de estágio;
+* Para se canditar a uma vaga, obrigatóriamente, o Estudante deve ter seu currículo cadastrado;
