@@ -46,11 +46,11 @@ class Vaga {
   String toString() {
     String retorno = "";
 
-    retorno += 'idEmpresa:' + _idEmpresa + ',';
-    retorno += 'nomeEmpresa:' + _nomeEmpresa + ',';
-    retorno += 'descricaoVaga:' + _descricaoVaga + ',';
-    retorno += 'remuneracao:' + _remuneracao.toString() + ',';
-    retorno += 'horasSemanais:' + _horasSemanais.toString() + ',';
+    retorno += "idEmpresa:" + _idEmpresa + ",";
+    retorno += "nomeEmpresa:" + _nomeEmpresa + ",";
+    retorno += "descricaoVaga:" + _descricaoVaga + ",";
+    retorno += "remuneracao:" + _remuneracao.toString() + ",";
+    retorno += "horasSemanais:" + _horasSemanais.toString() + ",";
 
     return retorno;
   }
