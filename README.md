@@ -13,3 +13,8 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" width="40" height="40"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" width="40" height="40"/>
 
 
+#### Requisitos:
+
+* O sistema deve disponibilizar cadastro para perfil de Estudante e Empregador;
+* O Empregador pode ter a opção de cadastro de vaga de estágio;
+* O Estagiário pode se candidatar a uma vaga de estágio;
