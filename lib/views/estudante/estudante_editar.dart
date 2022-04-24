@@ -14,7 +14,7 @@ class _EstudanteEditarViewState extends State<EstudanteEditarView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Editar informações"),
+        title: Text("Editar estudante"),
       ),
     );
   }

@@ -11,6 +11,10 @@ class EmpregadorEditarView extends StatefulWidget {
 class _EmpregadorEditarViewState extends State<EmpregadorEditarView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Editar empregador"),
+      ),
+    );
   }
 }
