@@ -12,6 +12,10 @@ class EstudanteEditarView extends StatefulWidget {
 class _EstudanteEditarViewState extends State<EstudanteEditarView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Editar informações"),
+      ),
+    );
   }
 }
