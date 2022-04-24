@@ -16,6 +16,7 @@ class EstudanteService {
         'instituicao': estudante.instituicao,
         'curso': estudante.curso,
         'areaInteresse': estudante.areaInteresse,
+        'idCurriculo': estudante.idCurriculo,
       });
 
       return "Cadastrado com sucesso!";
@@ -25,7 +26,7 @@ class EstudanteService {
   }
 
   Future<Estudante?> getEmpregador(email) async {
-    Estudante estudante = Estudante("", "", "", "", "","","","","","");
+    Estudante estudante = Estudante("", "", "", "", "","","","","","","");
     try{
       QuerySnapshot snapshot =
       await FirebaseFirestore.instance.collection('estudantes').get();
@@ -40,7 +41,7 @@ class EstudanteService {
           estudante.setAreaInteresse(d['areaInteresse']);
           estudante.setCurso(d['curso']);
           estudante.setInstituicao(d['instituicao']);
-
+          estudante.setIdCurriculo(d['idCurriculo']);
         }
       });
     }on FirebaseException catch (e) {
