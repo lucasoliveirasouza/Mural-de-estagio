@@ -21,7 +21,7 @@ class UsuarioService {
 
       if (usuario.funcao == "Estudante") {
         Estudante estudante = Estudante("", usuario.nome, usuario.email, "",
-            usuario.funcao, usuario.endereco, usuario.telefone, "", "", "","");
+            usuario.funcao, usuario.endereco, usuario.telefone, "");
         EstudanteService().cadastrarEstudante(estudante);
       } else if (usuario.funcao == "Empregador") {
         Empregador empregador = Empregador("", usuario.nome, usuario.email, "",

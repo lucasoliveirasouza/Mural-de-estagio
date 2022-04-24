@@ -32,9 +32,6 @@ class EstudanteService {
         'funcao': estudante.funcao,
         'endereco': estudante.endereco,
         'telefone': estudante.telefone,
-        'instituicao': estudante.instituicao,
-        'curso': estudante.curso,
-        'areaInteresse': estudante.areaInteresse,
         'idCurriculo': idCurriculo,
       });
 
@@ -45,7 +42,7 @@ class EstudanteService {
   }
 
   Future<Estudante?> getEstudante(email) async {
-    Estudante estudante = Estudante("", "", "", "", "", "", "", "", "", "", "");
+    Estudante estudante = Estudante("", "", "", "", "", "", "", "",);
     try {
       QuerySnapshot snapshot =
           await FirebaseFirestore.instance.collection('estudantes').get();
@@ -57,9 +54,6 @@ class EstudanteService {
           estudante.setFuncao(d['funcao']);
           estudante.setEndereco(d['endereco']);
           estudante.setTelefone(d['telefone']);
-          estudante.setAreaInteresse(d['areaInteresse']);
-          estudante.setCurso(d['curso']);
-          estudante.setInstituicao(d['instituicao']);
           estudante.setIdCurriculo(d['idCurriculo']);
         }
       });
