@@ -31,7 +31,6 @@ class _CurriculoEditarViewState extends State<CurriculoEditarView> {
       diferenciais.text = value?.diferenciais;
       referencias.text = value?.referencias;
       id = value?.id;
-      print(id);
 
     });
     return Scaffold(
