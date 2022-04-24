@@ -70,8 +70,8 @@ class _SobreViewState extends State<SobreView> {
             ),
             ListTile(
               leading: Icon(Icons.person),
-              title: Text("Informações pessoais"),
-              subtitle: Text("Visualizar e editar informações pessoais"),
+              title: Text("Informações gerais"),
+              subtitle: Text("Visualizar e editar informações gerais"),
             ),
             ListTile(
               leading: Icon(Icons.contact_mail),
