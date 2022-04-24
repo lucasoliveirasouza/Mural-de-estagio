@@ -3,7 +3,7 @@ import 'dart:ffi';
 import 'package:mural_estagio/models/usuario.dart';
 
 class Estudante extends Usuario {
-  late String _instituicao, _curso, _areaInteresse, _miniCurriculo;
+  late String _instituicao, _curso, _areaInteresse;
 
   Estudante(
       String id,
@@ -15,20 +15,14 @@ class Estudante extends Usuario {
       String telefone,
       String instituicao,
       String curso,
-      String areaInteresse,
-      String miniCurriculo)
+      String areaInteresse)
       : super(id, nome, email, senha, funcao, endereco, telefone) {
     this._instituicao = instituicao;
     this._curso = curso;
     this._areaInteresse = areaInteresse;
-    this._miniCurriculo = miniCurriculo;
   }
 
-  get miniCurriculo => _miniCurriculo;
 
-  void setMiniCurriculo(value) {
-    _miniCurriculo = value;
-  }
 
   get areaInteresse => _areaInteresse;
 

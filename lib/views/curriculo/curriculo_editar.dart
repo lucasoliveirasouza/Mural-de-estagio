@@ -1,9 +1,11 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/models/estudante.dart';
 
 class CurriculoEditarView extends StatefulWidget {
-  const CurriculoEditarView({Key? key}) : super(key: key);
+  Estudante? estudante;
+  CurriculoEditarView({Key? key, required this.estudante}) : super(key: key);
 
   @override
   _CurriculoEditarViewState createState() => _CurriculoEditarViewState();
@@ -15,8 +17,11 @@ class _CurriculoEditarViewState extends State<CurriculoEditarView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Currículo"
+          widget.estudante?.nome ?? ""
         ),
+      ),
+      body: Container(
+
       ),
     );
   }
