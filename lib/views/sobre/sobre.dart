@@ -75,6 +75,9 @@ class _SobreViewState extends State<SobreView> {
               leading: Icon(Icons.person),
               title: Text("Informações gerais"),
               subtitle: Text("Visualizar e editar informações gerais"),
+              onTap: (){
+
+              },
             ),
             ListTile(
               leading: Icon(Icons.contact_mail),
