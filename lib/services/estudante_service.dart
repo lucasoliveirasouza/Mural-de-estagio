@@ -1,12 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mural_estagio/models/curriculo.dart';
 import 'package:mural_estagio/models/estudante.dart';
-import 'package:mural_estagio/models/usuario.dart';
+import 'package:mural_estagio/services/curriculo_service.dart';
 
 class EstudanteService {
-  String? cadastrarUsuario(Estudante estudante) {
+
+
+  Future<String?> cadastrarEstudante(Estudante estudante) async {
     try {
+      Curriculo curriculo = Curriculo("", estudante.email, "", "", "", "", "");
+      CurriculoService().cadastrarCurriculo(curriculo);
+      String? idCurriculo;
+
+      try {
+        QuerySnapshot snapshot =
+            await FirebaseFirestore.instance.collection('curriculo').get();
+        snapshot.docs.forEach((d) {
+          if (d['emailEstudante'] == estudante.email) {
+            idCurriculo = d.id;
+          }
+        });
+      } on FirebaseException catch (e) {
+        print(e.toString());
+      }
+
       CollectionReference estudantes =
-      FirebaseFirestore.instance.collection('estudantes');
+          FirebaseFirestore.instance.collection('estudantes');
       estudantes.add({
         'nome': estudante.nome,
         'email': estudante.email,
@@ -16,7 +35,7 @@ class EstudanteService {
         'instituicao': estudante.instituicao,
         'curso': estudante.curso,
         'areaInteresse': estudante.areaInteresse,
-        'idCurriculo': estudante.idCurriculo,
+        'idCurriculo': idCurriculo,
       });
 
       return "Cadastrado com sucesso!";
@@ -25,11 +44,11 @@ class EstudanteService {
     }
   }
 
-  Future<Estudante?> getEmpregador(email) async {
-    Estudante estudante = Estudante("", "", "", "", "","","","","","","");
-    try{
+  Future<Estudante?> getEstudante(email) async {
+    Estudante estudante = Estudante("", "", "", "", "", "", "", "", "", "", "");
+    try {
       QuerySnapshot snapshot =
-      await FirebaseFirestore.instance.collection('estudantes').get();
+          await FirebaseFirestore.instance.collection('estudantes').get();
       snapshot.docs.forEach((d) {
         if (d['email'] == email) {
           estudante.setId(d.id);
@@ -44,7 +63,7 @@ class EstudanteService {
           estudante.setIdCurriculo(d['idCurriculo']);
         }
       });
-    }on FirebaseException catch (e) {
+    } on FirebaseException catch (e) {
       print(e.toString());
     }
     return estudante;

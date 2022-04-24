@@ -81,7 +81,7 @@ class _SobreViewState extends State<SobreView> {
               title: Text("Currículo"),
               subtitle: Text("Visualizar e editar currículo"),
               onTap: () {
-                EstudanteService().getEmpregador(auth.currentUser!.email.toString()).then((value){
+                EstudanteService().getEstudante(auth.currentUser!.email.toString()).then((value){
                   Navigator.push(
                       context,
                       MaterialPageRoute(

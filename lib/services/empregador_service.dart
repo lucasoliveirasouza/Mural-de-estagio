@@ -3,7 +3,7 @@ import 'package:mural_estagio/models/empregador.dart';
 
 
 class EmpregadorService {
-  String? cadastrarUsuario(Empregador empregador) {
+  String? cadastrarEmpregador(Empregador empregador) {
     try {
       CollectionReference empregadores =
       FirebaseFirestore.instance.collection('empregadores');
