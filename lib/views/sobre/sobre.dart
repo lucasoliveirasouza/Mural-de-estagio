@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mural_estagio/models/usuario.dart';
 import 'package:mural_estagio/services/auth_service.dart';
 import 'package:mural_estagio/services/usuario_service.dart';
+import 'package:mural_estagio/views/curriculo/curriculo_editar.dart';
 
 class SobreView extends StatefulWidget {
   const SobreView({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _SobreViewState extends State<SobreView> {
   Widget build(BuildContext context) {
     final usuario =
         UsuarioService().getUser(auth.currentUser!.email.toString());
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Sobre"),
@@ -77,6 +78,12 @@ class _SobreViewState extends State<SobreView> {
               leading: Icon(Icons.contact_mail),
               title: Text("Currículo"),
               subtitle: Text("Visualizar e editar currículo"),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CurriculoEditarView()));
+              },
             ),
             ListTile(
               leading: Icon(Icons.info),
@@ -90,7 +97,6 @@ class _SobreViewState extends State<SobreView> {
               child: Center(
                 child: IconButton(
                   onPressed: () {
-
                     AuthService().logout();
                   },
                   icon: Icon(
