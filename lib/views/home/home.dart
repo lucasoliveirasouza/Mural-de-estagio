@@ -39,7 +39,6 @@ class _HomeViewState extends State<HomeView> {
         onTap: mudarAba,
         items: [
           BottomNavigationBarItem(
-
               icon: Icon(Icons.home),
               label: "Início"
           ),

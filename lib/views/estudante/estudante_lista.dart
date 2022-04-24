@@ -13,7 +13,7 @@ class _EstudanteListaViewState extends State<EstudanteListaView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text("Lista de ")
+        title:  Text("Estudantes")
       ),
     );
   }
