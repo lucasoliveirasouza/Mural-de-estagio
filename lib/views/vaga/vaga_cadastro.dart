@@ -81,7 +81,11 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
                         value?.nome ?? "",
                         descricao.text,
                         double.parse(remuneracao.text),
-                        int.parse(horasSemanais.text));
+                        "",
+                        "",
+                        "",
+                        "",
+                        "");
                     VagaService().cadastrarVaga(vaga);
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Vaga cadastrada!")));

@@ -16,11 +16,8 @@ class VagaView extends StatefulWidget {
 }
 
 class _VagaViewState extends State<VagaView> {
-
   @override
   Widget build(BuildContext context) {
-
-
     final empregador = EmpregadorService().findById(widget.vaga.idEmpresa);
     return Scaffold(
       appBar: AppBar(
@@ -38,39 +35,32 @@ class _VagaViewState extends State<VagaView> {
                   ),
                 ),
               ),
-
               ListTile(
                 title: Text("Empresa: " + widget.vaga.nomeEmpresa),
               ),
               FutureBuilder(
                 future: empregador,
-                builder:
-                    (BuildContext context, AsyncSnapshot<Empregador?> snapshot) {
+                builder: (BuildContext context,
+                    AsyncSnapshot<Empregador?> snapshot) {
                   if (snapshot.hasData) {
                     return ListTile(
                       title: Text("Endereço: " + snapshot.data?.endereco),
                     );
-
                   } else {
-                    return Container(
-
-                    );
+                    return Container();
                   }
                 },
               ),
               FutureBuilder(
                 future: empregador,
-                builder:
-                    (BuildContext context, AsyncSnapshot<Empregador?> snapshot) {
+                builder: (BuildContext context,
+                    AsyncSnapshot<Empregador?> snapshot) {
                   if (snapshot.hasData) {
                     return ListTile(
                       title: Text("Email: " + snapshot.data?.email),
                     );
-
                   } else {
-                    return Container(
-
-                    );
+                    return Container();
                   }
                 },
               ),
@@ -81,15 +71,9 @@ class _VagaViewState extends State<VagaView> {
                 title:
                     Text("Remuneração: " + widget.vaga.remuneracao.toString()),
               ),
-              ListTile(
-                title: Text(
-                    "Horas semanais: " + widget.vaga.horasSemanais.toString()),
-              ),
               BotaoPadrao(
                 titulo: "Candidatar",
-                onTap: () {
-
-                },
+                onTap: () {},
               ),
             ],
           )),

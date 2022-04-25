@@ -1,57 +1,84 @@
 class Vaga {
   late String _id;
-  late String _idEmpresa, _nomeEmpresa, _descricaoVaga;
+  late String _idEmpresa;
+  late String _nomeEmpresa;
+  late String _cursos;
   late double _remuneracao;
-  late int _horasSemanais;
+  late String _local;
+  late String _requisitoEscolaridade;
+  late String _periodo;
+  late String _descricaoVaga;
+  late String _informacoesAdicionais;
 
-  Vaga(this._id, this._idEmpresa, this._nomeEmpresa, this._descricaoVaga,
-      this._remuneracao, this._horasSemanais);
+  Vaga(
+      this._id,
+      this._idEmpresa,
+      this._nomeEmpresa,
+      this._cursos,
+      this._remuneracao,
+      this._local,
+      this._requisitoEscolaridade,
+      this._periodo,
+      this._descricaoVaga,
+      this._informacoesAdicionais);
 
-  String get id => _id;
+  String get informacoesAdicionais => _informacoesAdicionais;
 
-  set id(String value) {
-    _id = value;
+  set informacoesAdicionais(String value) {
+    _informacoesAdicionais = value;
   }
 
-  int get horasSemanais => _horasSemanais;
+  String get descricaoVaga => _descricaoVaga;
 
-  void setHorasSemanais(int value) {
-    _horasSemanais = value;
+  set descricaoVaga(String value) {
+    _descricaoVaga = value;
+  }
+
+  String get periodo => _periodo;
+
+  set periodo(String value) {
+    _periodo = value;
+  }
+
+  String get requisitoEscolaridade => _requisitoEscolaridade;
+
+  set requisitoEscolaridade(String value) {
+    _requisitoEscolaridade = value;
+  }
+
+  String get local => _local;
+
+  set local(String value) {
+    _local = value;
   }
 
   double get remuneracao => _remuneracao;
 
-  void setRemuneracao(double value) {
+  set remuneracao(double value) {
     _remuneracao = value;
   }
 
-  get descricaoVaga => _descricaoVaga;
+  String get cursos => _cursos;
 
-  void setDescricaoVaga(value) {
-    _descricaoVaga = value;
+  set cursos(String value) {
+    _cursos = value;
   }
 
-  get nomeEmpresa => _nomeEmpresa;
+  String get nomeEmpresa => _nomeEmpresa;
 
-  void setNomeEmpresa(value) {
+  set nomeEmpresa(String value) {
     _nomeEmpresa = value;
   }
 
   String get idEmpresa => _idEmpresa;
 
-  void setIdEmpresa(String value) {
+  set idEmpresa(String value) {
     _idEmpresa = value;
   }
 
-  String toString() {
-    String retorno = "";
+  String get id => _id;
 
-    retorno += "idEmpresa:" + _idEmpresa + ",";
-    retorno += "nomeEmpresa:" + _nomeEmpresa + ",";
-    retorno += "descricaoVaga:" + _descricaoVaga + ",";
-    retorno += "remuneracao:" + _remuneracao.toString() + ",";
-    retorno += "horasSemanais:" + _horasSemanais.toString() + ",";
-
-    return retorno;
+  set id(String value) {
+    _id = value;
   }
 }

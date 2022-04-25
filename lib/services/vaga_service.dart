@@ -11,7 +11,6 @@ class VagaService {
         'nomeEmpresa': vaga.nomeEmpresa,
         'descricaoVaga': vaga.descricaoVaga,
         'remuneracao': vaga.remuneracao,
-        'horasSemanais': vaga.horasSemanais,
       });
 
       return "Cadastrado com sucesso!";
@@ -27,7 +26,7 @@ class VagaService {
           await FirebaseFirestore.instance.collection('vagas').get();
       snapshot.docs.forEach((d) {
         Vaga vaga = Vaga(d.id, d["idEmpresa"], d["nomeEmpresa"],
-            d["descricaoVaga"], d["remuneracao"], d["horasSemanais"]);
+            d["descricaoVaga"], d["remuneracao"], "", "", "", "", "");
         vagas.add(vaga);
       });
       return vagas;
