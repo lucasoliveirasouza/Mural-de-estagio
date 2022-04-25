@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/models/estudante.dart';
 import 'package:mural_estagio/services/estudante_service.dart';
 import 'package:mural_estagio/widgets/botao_padrao.dart';
 import 'package:mural_estagio/widgets/form_field_padrao.dart';
@@ -18,6 +19,7 @@ class _EstudanteEditarViewState extends State<EstudanteEditarView> {
   final email = TextEditingController();
   final endereco = TextEditingController();
   final telefone = TextEditingController();
+  String id = "";
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class _EstudanteEditarViewState extends State<EstudanteEditarView> {
       email.text = value?.email ?? "";
       endereco.text = value?.endereco ?? "";
       telefone.text = value?.telefone ?? "";
+      id = value?.id ?? "";
     });
     return Scaffold(
       appBar: AppBar(
@@ -60,7 +63,16 @@ class _EstudanteEditarViewState extends State<EstudanteEditarView> {
             ),
             BotaoPadrao(
               titulo: "Salvar",
-              onTap: () {},
+              onTap: () {
+                Estudante estudante = Estudante(id, nome.text, "", "", "",
+                    endereco.text, telefone.text, "");
+
+                EstudanteService().editarEstudante(estudante);
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Informações editadas!")));
+                Navigator.of(context).pop();
+              },
             ),
           ],
         ),

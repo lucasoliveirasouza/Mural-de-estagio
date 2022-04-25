@@ -4,8 +4,6 @@ import 'package:mural_estagio/models/estudante.dart';
 import 'package:mural_estagio/services/curriculo_service.dart';
 
 class EstudanteService {
-
-
   Future<String?> cadastrarEstudante(Estudante estudante) async {
     try {
       Curriculo curriculo = Curriculo("", estudante.email, "", "", "", "", "");
@@ -42,7 +40,16 @@ class EstudanteService {
   }
 
   Future<Estudante?> getEstudante(email) async {
-    Estudante estudante = Estudante("", "", "", "", "", "", "", "",);
+    Estudante estudante = Estudante(
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+    );
     try {
       QuerySnapshot snapshot =
           await FirebaseFirestore.instance.collection('estudantes').get();
@@ -61,5 +68,19 @@ class EstudanteService {
       print(e.toString());
     }
     return estudante;
+  }
+
+  String? editarEstudante(Estudante estudante) {
+    try {
+      var collection = FirebaseFirestore.instance.collection('estudantes');
+      collection.doc(estudante.id).update({
+        'nome': estudante.nome,
+        'endereco': estudante.endereco,
+        'telefone': estudante.telefone,
+      });
+    } on FirebaseException catch (e) {
+      print(e.toString());
+    }
+    return "Editado com sucesso!";
   }
 }
