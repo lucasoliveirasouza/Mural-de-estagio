@@ -3,6 +3,7 @@ import 'package:mural_estagio/models/vaga.dart';
 import 'package:mural_estagio/services/vaga_service.dart';
 import 'package:mural_estagio/views/vaga/vaga.dart';
 import 'package:mural_estagio/views/vaga/vaga_cadastro.dart';
+import 'package:mural_estagio/widgets/card_item.dart';
 
 class VagaListaView extends StatefulWidget {
   const VagaListaView({Key? key}) : super(key: key);
@@ -17,10 +18,10 @@ class _VagaListaViewState extends State<VagaListaView> {
     Future<List<Vaga?>?> futureList = VagaService().getAll();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Lista de vagas"),
+        title: Text("Olá, estudante"),
       ),
       body: Container(
-        padding: EdgeInsets.only(right: 15, left: 15, top: 10),
+        padding: EdgeInsets.only(right: 70, left: 70, top: 15),
         child: FutureBuilder(
             future: futureList,
             builder:
@@ -31,55 +32,87 @@ class _VagaListaViewState extends State<VagaListaView> {
                 itemBuilder: ((context, index) {
                   return Column(
                     children: [
-                      Container(
-                        child: Card(
-                          color: Colors.deepPurple.shade50,
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                              color: Colors.deepPurple,
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      VagaView(vaga: snapshot.data![index]!)));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.deepPurple.shade50,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
-                          child: Column(
-                            children: [
-                              ListTile(
-                                title: Text(
-                                  snapshot.data![index]!.nomeEmpresa,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                leading: Icon(
-                                  Icons.account_circle,
-                                  size: 40,
-                                  color: Colors.deepPurple,
-                                ),
-                                subtitle: Text("Valor: RS " +
-                                    snapshot.data![index]!.remuneracao
-                                        .toString()),
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => VagaView(vaga: snapshot.data![index]!)));
-                                },
-                              ),
-                              Divider(
+                          padding: EdgeInsets.all(8),
+                          child: Column(children: [
+                            SizedBox(
+                              width: 30,
+                              height: 30,
+                              child: Icon(
+                                Icons.email,
+                                size: 30,
                                 color: Colors.deepPurple,
                               ),
-                              ListTile(
-                                title: Text(
-                                  snapshot.data![index]!.descricaoVaga,
-                                ),
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => VagaView(vaga: snapshot.data![index]!)));
-                                },
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Center(
+                              child: Text(
+                                snapshot.data![index]!.nomeEmpresa,
+                                style: TextStyle(
+                                    fontSize: 21,
+                                    color: Colors.deepPurple,
+                                    fontWeight: FontWeight.bold),
                               ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Center(
+                              child: Text(
+                                "BOLSA: " +
+                                    snapshot.data![index]!.remuneracao
+                                        .toString(),
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.deepPurple,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Center(
+                              child: Text(
+                                "LOCAL: ",
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.deepPurple,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Center(
+                              child: Text(
+                                "VER MAIS",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.deepPurple,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            )
+                          ]),
                         ),
                       ),
                       SizedBox(
-                        height: 10,
-                      )
+                        height: 15,
+                      ),
                     ],
                   );
                 }),
