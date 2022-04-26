@@ -80,6 +80,7 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
                         value?.id,
                         value?.nome ?? "",
                         descricao.text,
+                        "",
                         double.parse(remuneracao.text),
                         "",
                         "",

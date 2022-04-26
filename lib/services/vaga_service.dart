@@ -25,7 +25,7 @@ class VagaService {
       QuerySnapshot snapshot =
           await FirebaseFirestore.instance.collection('vagas').get();
       snapshot.docs.forEach((d) {
-        Vaga vaga = Vaga(d.id, d["idEmpresa"], d["nomeEmpresa"],
+        Vaga vaga = Vaga(d.id, d["idEmpresa"], d["nomeEmpresa"], "",
             d["descricaoVaga"], d["remuneracao"], "", "", "", "", "");
         vagas.add(vaga);
       });
