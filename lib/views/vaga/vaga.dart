@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mural_estagio/models/empregador.dart';
-import 'package:mural_estagio/models/usuario.dart';
 import 'package:mural_estagio/models/vaga.dart';
-import 'package:mural_estagio/services/empregador_service.dart';
-import 'package:mural_estagio/services/usuario_service.dart';
 import 'package:mural_estagio/widgets/botao_padrao.dart';
 
 class VagaView extends StatefulWidget {
@@ -18,7 +14,6 @@ class VagaView extends StatefulWidget {
 class _VagaViewState extends State<VagaView> {
   @override
   Widget build(BuildContext context) {
-    final empregador = EmpregadorService().findById(widget.vaga.idEmpresa);
     return Scaffold(
       appBar: AppBar(
         title: Text("Detalhes da vaga"),

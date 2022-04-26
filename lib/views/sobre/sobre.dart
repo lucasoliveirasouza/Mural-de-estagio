@@ -20,9 +20,6 @@ class _SobreViewState extends State<SobreView> {
 
   @override
   Widget build(BuildContext context) {
-    final usuario =
-        UsuarioService().getUser(auth.currentUser!.email.toString());
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Sobre"),
@@ -46,26 +43,11 @@ class _SobreViewState extends State<SobreView> {
             ),
             Container(
               child: Center(
-                child: FutureBuilder(
-                  future: usuario,
-                  builder:
-                      (BuildContext context, AsyncSnapshot<Usuario?> snapshot) {
-                    if (snapshot.hasData) {
-                      return Text(
-                        snapshot.data?.nome ?? "",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      );
-                    } else {
-                      return Text(
-                        "",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      );
-                    }
-                  },
+                child: Text(
+                  UsuarioService().getUsuario()?.nome.toString() ?? "",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ),
@@ -76,12 +58,20 @@ class _SobreViewState extends State<SobreView> {
               leading: Icon(Icons.person),
               title: Text("Informações gerais"),
               subtitle: Text("Visualizar e editar informações gerais"),
-              onTap: (){
-                UsuarioService().getUser(auth.currentUser!.email.toString()).then((value){
-                  if(value?.funcao == "Estudante"){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => EstudanteEditarView()));
-                  }else if(value?.funcao == "Empregador"){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => EmpregadorEditarView()));
+              onTap: () {
+                UsuarioService()
+                    .getUser(auth.currentUser!.email.toString())
+                    .then((value) {
+                  if (value?.funcao == "Estudante") {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => EstudanteEditarView()));
+                  } else if (value?.funcao == "Empregador") {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => EmpregadorEditarView()));
                   }
                 });
               },
@@ -91,13 +81,16 @@ class _SobreViewState extends State<SobreView> {
               title: Text("Currículo"),
               subtitle: Text("Visualizar e editar currículo"),
               onTap: () {
-                EstudanteService().getEstudante(auth.currentUser!.email.toString()).then((value){
+                EstudanteService()
+                    .getEstudante(auth.currentUser!.email.toString())
+                    .then((value) {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => CurriculoEditarView(estudante: value,)));
+                          builder: (context) => CurriculoEditarView(
+                                estudante: value,
+                              )));
                 });
-
               },
             ),
             ListTile(

@@ -1,12 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mural_estagio/models/empregador.dart';
 
-
 class EmpregadorService {
   String? cadastrarEmpregador(Empregador empregador) {
     try {
       CollectionReference empregadores =
-      FirebaseFirestore.instance.collection('empregadores');
+          FirebaseFirestore.instance.collection('empregadores');
       empregadores.add({
         'nome': empregador.nome,
         'email': empregador.email,
@@ -14,7 +13,6 @@ class EmpregadorService {
         'endereco': empregador.endereco,
         'telefone': empregador.telefone,
         'descricaoEmpresa': empregador.descricaoEmpresa,
-
       });
 
       return "Cadastrado com sucesso!";
@@ -22,11 +20,12 @@ class EmpregadorService {
       return e.toString();
     }
   }
+
   Future<Empregador?> getEmpregador(email) async {
-    Empregador empregador = Empregador("", "", "", "", "","","","");
-    try{
+    Empregador empregador = Empregador("", "", "", "", "", "", "", "");
+    try {
       QuerySnapshot snapshot =
-      await FirebaseFirestore.instance.collection('empregadores').get();
+          await FirebaseFirestore.instance.collection('empregadores').get();
       snapshot.docs.forEach((d) {
         if (d['email'] == email) {
           empregador.setId(d.id);
@@ -35,34 +34,25 @@ class EmpregadorService {
           empregador.setFuncao(d['funcao']);
           empregador.setEndereco(d['endereco']);
           empregador.setTelefone(d['telefone']);
-
         }
       });
-    }on FirebaseException catch (e) {
+    } on FirebaseException catch (e) {
       print(e.toString());
     }
     return empregador;
   }
 
-  Future<Empregador?> findById(id) async {
-    Empregador empregador = Empregador("", "", "", "", "","","","");
-    try{
-      QuerySnapshot snapshot =
-      await FirebaseFirestore.instance.collection('empregadores').get();
-      snapshot.docs.forEach((d) {
-        if (d.id == id) {
-          empregador.setId(d.id);
-          empregador.setNome(d['nome']);
-          empregador.setEmail(d['email']);
-          empregador.setFuncao(d['funcao']);
-          empregador.setEndereco(d['endereco']);
-          empregador.setTelefone(d['telefone']);
-
-        }
+  String? editarEmpregador(Empregador empregador) {
+    try {
+      var collection = FirebaseFirestore.instance.collection('empregadores');
+      collection.doc(empregador.id).update({
+        'nome': empregador.nome,
+        'endereco': empregador.endereco,
+        'telefone': empregador.telefone,
       });
-    }on FirebaseException catch (e) {
+    } on FirebaseException catch (e) {
       print(e.toString());
     }
-    return empregador;
+    return "Editado com sucesso!";
   }
 }

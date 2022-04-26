@@ -6,6 +6,12 @@ import 'package:mural_estagio/services/empregador_service.dart';
 import 'package:mural_estagio/services/estudante_service.dart';
 
 class UsuarioService {
+  static Usuario? usuarioPadrao;
+
+  Usuario? getUsuario() {
+    return usuarioPadrao;
+  }
+
   String? cadastrarUsuario(Usuario usuario) {
     try {
       print("CADASTRADO");
@@ -52,6 +58,7 @@ class UsuarioService {
     } on FirebaseException catch (e) {
       print(e.toString());
     }
+    usuarioPadrao = usuario;
     return usuario;
   }
 }
