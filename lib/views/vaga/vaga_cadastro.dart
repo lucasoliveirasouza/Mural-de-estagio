@@ -17,9 +17,14 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
   FirebaseAuth auth = FirebaseAuth.instance;
   String idUsuario = "";
   String nomeUsuario = "";
-  final descricao = TextEditingController();
+
+  final cursos = TextEditingController();
   final remuneracao = TextEditingController();
-  final horasSemanais = TextEditingController();
+  final local = TextEditingController();
+  final requisitoEscolaridade = TextEditingController();
+  final periodo = TextEditingController();
+  final descricaoVaga = TextEditingController();
+  final informacoesAdicionais = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +36,45 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
         padding: EdgeInsets.all(15),
         child: ListView(
           children: [
+            FormFieldPadrao(
+                controle: cursos,
+                title: "Cursos para a vaga"
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            FormFieldPadrao(
+              controle: remuneracao,
+              title: "Remuneração",
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            FormFieldPadrao(
+              controle: local,
+              title: "Local de oferta",
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            FormFieldPadrao(
+              controle: requisitoEscolaridade,
+              title: "Requisitos de escolaridade",
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            FormFieldPadrao(
+              controle: periodo,
+              title: "Período do estágio",
+            ),
+            SizedBox(
+              height: 10,
+            ),
+
             TextFormField(
               maxLines: 6,
-              controller: descricao,
+              controller: descricaoVaga,
               decoration: InputDecoration(
                 labelText: "Descrição da vaga",
                 labelStyle: TextStyle(
@@ -51,16 +92,25 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
             SizedBox(
               height: 10,
             ),
-            FormFieldPadrao(
-              controle: remuneracao,
-              title: "Remuneração",
+            TextFormField(
+              maxLines: 3,
+              controller: informacoesAdicionais,
+              decoration: InputDecoration(
+                labelText: "Informações adicionais",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    new Radius.circular(10.0),
+                  ),
+                ),
+              ),
             ),
             SizedBox(
               height: 10,
-            ),
-            FormFieldPadrao(
-              controle: horasSemanais,
-              title: "Quantidade de horas semanais",
             ),
             SizedBox(
               height: 25,
@@ -79,13 +129,15 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
                         "",
                         value?.id,
                         value?.nome ?? "",
-                        descricao.text,
+                        cursos.text,
                         double.parse(remuneracao.text),
-                        "",
-                        "",
-                        "",
-                        "",
-                        "");
+                        local.text,
+                        requisitoEscolaridade.text,
+                        periodo.text,
+                        descricaoVaga.text,
+                        informacoesAdicionais.text
+                    );
+
                     VagaService().cadastrarVaga(vaga);
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Vaga cadastrada!")));
