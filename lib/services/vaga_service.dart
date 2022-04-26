@@ -9,8 +9,13 @@ class VagaService {
       vagas.add({
         'idEmpresa': vaga.idEmpresa,
         'nomeEmpresa': vaga.nomeEmpresa,
-        'descricaoVaga': vaga.descricaoVaga,
+        'cursos': vaga.cursos,
         'remuneracao': vaga.remuneracao,
+        'local': vaga.local,
+        'requisitoEscolaridade': vaga.requisitoEscolaridade,
+        'periodo': vaga.periodo,
+        'descricaoVaga': vaga.descricaoVaga,
+        'informacoesAdicionais': vaga.informacoesAdicionais,
       });
 
       return "Cadastrado com sucesso!";
@@ -25,8 +30,18 @@ class VagaService {
       QuerySnapshot snapshot =
           await FirebaseFirestore.instance.collection('vagas').get();
       snapshot.docs.forEach((d) {
-        Vaga vaga = Vaga(d.id, d["idEmpresa"], d["nomeEmpresa"], "",
-            d["descricaoVaga"], d["remuneracao"], "", "", "", "", "");
+        Vaga vaga = Vaga(
+            d.id,
+            d["idEmpresa"],
+            d["nomeEmpresa"],
+            d["cursos"],
+            d["remuneracao"],
+            d["local"],
+            d["requisitoEscolaridade"],
+            d["periodo"],
+            d["descricaoVaga"],
+            d["informacoesAdicionais"]
+        );
         vagas.add(vaga);
       });
       return vagas;

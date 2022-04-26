@@ -3,7 +3,7 @@ import 'package:mural_estagio/models/vaga.dart';
 import 'package:mural_estagio/services/vaga_service.dart';
 import 'package:mural_estagio/views/vaga/vaga.dart';
 import 'package:mural_estagio/views/vaga/vaga_cadastro.dart';
-import 'package:mural_estagio/widgets/card_item.dart';
+
 
 class VagaListaView extends StatefulWidget {
   const VagaListaView({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class _VagaListaViewState extends State<VagaListaView> {
         title: Text("Olá, estudante"),
       ),
       body: Container(
-        padding: EdgeInsets.only(right: 70, left: 70, top: 15),
+        padding: EdgeInsets.only(right: 40, left: 40, top: 15),
         child: FutureBuilder(
             future: futureList,
             builder:
@@ -48,20 +48,16 @@ class _VagaListaViewState extends State<VagaListaView> {
                           padding: EdgeInsets.all(8),
                           child: Column(children: [
                             SizedBox(
-                              width: 30,
-                              height: 30,
-                              child: Icon(
-                                Icons.email,
-                                size: 30,
-                                color: Colors.deepPurple,
-                              ),
+                              width: 60,
+                              height: 60,
+                              child: Image.asset("assets/images/diplomado.png")
                             ),
                             SizedBox(
                               height: 15,
                             ),
                             Center(
                               child: Text(
-                                snapshot.data![index]!.nomeEmpresa,
+                                snapshot.data![index]!.cursos,
                                 style: TextStyle(
                                     fontSize: 21,
                                     color: Colors.deepPurple,
@@ -69,11 +65,11 @@ class _VagaListaViewState extends State<VagaListaView> {
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 15,
                             ),
                             Center(
                               child: Text(
-                                "BOLSA: " +
+                                "Remuneração: " +
                                     snapshot.data![index]!.remuneracao
                                         .toString(),
                                 style: TextStyle(
@@ -87,7 +83,21 @@ class _VagaListaViewState extends State<VagaListaView> {
                             ),
                             Center(
                               child: Text(
-                                "LOCAL: ",
+                                "Local: "+
+                                    snapshot.data![index]!.local,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.deepPurple,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Center(
+                              child: Text(
+                                "Turno: "+
+                                    snapshot.data![index]!.periodo,
                                 style: TextStyle(
                                     fontSize: 18,
                                     color: Colors.deepPurple,
