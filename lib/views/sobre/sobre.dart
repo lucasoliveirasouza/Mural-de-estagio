@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mural_estagio/models/usuario.dart';
 import 'package:mural_estagio/services/auth_service.dart';
 import 'package:mural_estagio/services/estudante_service.dart';
 import 'package:mural_estagio/services/usuario_service.dart';
@@ -59,21 +58,19 @@ class _SobreViewState extends State<SobreView> {
               title: Text("Informações gerais"),
               subtitle: Text("Visualizar e editar informações gerais"),
               onTap: () {
-                UsuarioService()
-                    .getUser(auth.currentUser!.email.toString())
-                    .then((value) {
-                  if (value?.funcao == "Estudante") {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EstudanteEditarView()));
-                  } else if (value?.funcao == "Empregador") {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EmpregadorEditarView()));
-                  }
-                });
+                if (UsuarioService().getUsuario()?.funcao.toString() ==
+                    "Estudante") {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EstudanteEditarView()));
+                } else if (UsuarioService().getUsuario()?.funcao.toString() ==
+                    "Empregador") {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EmpregadorEditarView()));
+                }
               },
             ),
             ListTile(
