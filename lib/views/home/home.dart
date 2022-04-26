@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mural_estagio/services/usuario_service.dart';
+import 'package:mural_estagio/views/interessado/interessado_lista.dart';
 import 'package:mural_estagio/views/interesse/interesse_lista.dart';
 import 'package:mural_estagio/views/sobre/sobre.dart';
 import 'package:mural_estagio/views/vaga/vaga_lista.dart';
@@ -16,11 +17,7 @@ class _HomeViewState extends State<HomeView> {
   FirebaseAuth auth = FirebaseAuth.instance;
   int _pagina = 0;
 
-  final List<Widget> _telas = [
-    VagaListaView(),
-    InteresseListaView(),
-    SobreView(),
-  ];
+  final List<Widget> _telas = [];
 
   void mudarAba(int indice) {
     setState(() {
@@ -31,6 +28,18 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     UsuarioService().getUser(auth.currentUser!.email.toString());
+
+    if (UsuarioService().getUsuario()?.funcao == "Estudante") {
+      _telas.clear();
+      _telas.add(VagaListaView());
+      _telas.add(InteresseListaView());
+      _telas.add(SobreView());
+    } else {
+      _telas.clear();
+      _telas.add(VagaListaView());
+      _telas.add(InteressadoListaView());
+      _telas.add(SobreView());
+    }
     return Scaffold(
       body: _telas[_pagina],
       bottomNavigationBar: BottomNavigationBar(
