@@ -2,7 +2,6 @@ class Vaga {
   late String _id;
   late String _idEmpresa;
   late String _nomeEmpresa;
-  late String _nivel;
   late String _cursos;
   late double _remuneracao;
   late String _local;
@@ -15,7 +14,6 @@ class Vaga {
       this._id,
       this._idEmpresa,
       this._nomeEmpresa,
-      this._nivel,
       this._cursos,
       this._remuneracao,
       this._local,

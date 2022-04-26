@@ -38,38 +38,32 @@ class _VagaViewState extends State<VagaView> {
               ListTile(
                 title: Text("Empresa: " + widget.vaga.nomeEmpresa),
               ),
-              FutureBuilder(
-                future: empregador,
-                builder: (BuildContext context,
-                    AsyncSnapshot<Empregador?> snapshot) {
-                  if (snapshot.hasData) {
-                    return ListTile(
-                      title: Text("Endereço: " + snapshot.data?.endereco),
-                    );
-                  } else {
-                    return Container();
-                  }
-                },
-              ),
-              FutureBuilder(
-                future: empregador,
-                builder: (BuildContext context,
-                    AsyncSnapshot<Empregador?> snapshot) {
-                  if (snapshot.hasData) {
-                    return ListTile(
-                      title: Text("Email: " + snapshot.data?.email),
-                    );
-                  } else {
-                    return Container();
-                  }
-                },
-              ),
               ListTile(
-                title: Text("Descrição: " + widget.vaga.descricaoVaga),
+                title: Text("Cursos: " + widget.vaga.cursos),
               ),
               ListTile(
                 title:
                     Text("Remuneração: " + widget.vaga.remuneracao.toString()),
+              ),
+              ListTile(
+                title: Text("Local: " + widget.vaga.local),
+              ),
+              ListTile(
+                title:
+                    Text("Escolaridade: " + widget.vaga.requisitoEscolaridade),
+              ),
+              ListTile(
+                title: Text("Turno: " + widget.vaga.periodo),
+              ),
+              ListTile(
+                title: Text("Descrição da vaga: " + widget.vaga.descricaoVaga),
+              ),
+              ListTile(
+                title: Text("Informações adicionais: " +
+                    widget.vaga.informacoesAdicionais),
+              ),
+              SizedBox(
+                height: 15,
               ),
               BotaoPadrao(
                 titulo: "Candidatar",
