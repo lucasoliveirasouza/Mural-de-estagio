@@ -17,7 +17,7 @@ class _VagaListaViewState extends State<VagaListaView> {
     Future<List<Vaga?>?> futureList = VagaService().getAll();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Olá, estudante"),
+        title: Text("Lista de vagas"),
       ),
       body: Container(
         padding: EdgeInsets.only(right: 40, left: 40, top: 15),
