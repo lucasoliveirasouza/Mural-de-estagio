@@ -4,7 +4,6 @@ import 'package:mural_estagio/services/vaga_service.dart';
 import 'package:mural_estagio/views/vaga/vaga.dart';
 import 'package:mural_estagio/views/vaga/vaga_cadastro.dart';
 
-
 class VagaListaView extends StatefulWidget {
   const VagaListaView({Key? key}) : super(key: key);
 
@@ -48,10 +47,10 @@ class _VagaListaViewState extends State<VagaListaView> {
                           padding: EdgeInsets.all(8),
                           child: Column(children: [
                             SizedBox(
-                              width: 60,
-                              height: 60,
-                              child: Image.asset("assets/images/diplomado.png")
-                            ),
+                                width: 60,
+                                height: 60,
+                                child:
+                                    Image.asset("assets/images/diplomado.png")),
                             SizedBox(
                               height: 15,
                             ),
@@ -83,8 +82,7 @@ class _VagaListaViewState extends State<VagaListaView> {
                             ),
                             Center(
                               child: Text(
-                                "Local: "+
-                                    snapshot.data![index]!.local,
+                                "Local: " + snapshot.data![index]!.local,
                                 style: TextStyle(
                                     fontSize: 18,
                                     color: Colors.deepPurple,
@@ -96,8 +94,7 @@ class _VagaListaViewState extends State<VagaListaView> {
                             ),
                             Center(
                               child: Text(
-                                "Turno: "+
-                                    snapshot.data![index]!.periodo,
+                                "Turno: " + snapshot.data![index]!.periodo,
                                 style: TextStyle(
                                     fontSize: 18,
                                     color: Colors.deepPurple,
