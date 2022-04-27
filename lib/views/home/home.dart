@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mural_estagio/services/usuario_service.dart';
 
 import 'package:mural_estagio/views/interesse/interesse_lista.dart';
-import 'package:mural_estagio/views/sobre/sobre.dart';
+import 'package:mural_estagio/views/perfil/perfil.dart';
 
 import 'package:mural_estagio/views/vaga/vaga_lista.dart';
 
@@ -21,7 +21,7 @@ class _HomeViewState extends State<HomeView> {
   final List<Widget> _telas = [
     VagaListaView(),
     InteresseListaView(),
-    SobreView()
+    PerfilView()
   ];
 
   void mudarAba(int indice) {
@@ -45,7 +45,7 @@ class _HomeViewState extends State<HomeView> {
           BottomNavigationBarItem(
               icon: Icon(Icons.text_snippet_outlined), label: "Interesses"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle), label: "Sobre"),
+              icon: Icon(Icons.account_circle), label: "Perfil"),
         ],
       ),
     );
