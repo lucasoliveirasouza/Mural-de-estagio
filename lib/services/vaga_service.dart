@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mural_estagio/models/vaga.dart';
+import 'package:mural_estagio/services/usuario_service.dart';
 
 class VagaService {
   String? cadastrarVaga(Vaga vaga) {
@@ -30,19 +32,36 @@ class VagaService {
       QuerySnapshot snapshot =
           await FirebaseFirestore.instance.collection('vagas').get();
       snapshot.docs.forEach((d) {
-        Vaga vaga = Vaga(
-            d.id,
-            d["idEmpresa"],
-            d["nomeEmpresa"],
-            d["cursos"],
-            d["remuneracao"],
-            d["local"],
-            d["requisitoEscolaridade"],
-            d["periodo"],
-            d["descricaoVaga"],
-            d["informacoesAdicionais"]
-        );
-        vagas.add(vaga);
+        if (UsuarioService().getUsuario()?.funcao.toString() == "Estudante") {
+          Vaga vaga = Vaga(
+              d.id,
+              d["idEmpresa"],
+              d["nomeEmpresa"],
+              d["cursos"],
+              d["remuneracao"],
+              d["local"],
+              d["requisitoEscolaridade"],
+              d["periodo"],
+              d["descricaoVaga"],
+              d["informacoesAdicionais"]);
+          vagas.add(vaga);
+        } else {
+          if (UsuarioService().getUsuario()?.nome.toString() ==
+              d["nomeEmpresa"]) {
+            Vaga vaga = Vaga(
+                d.id,
+                d["idEmpresa"],
+                d["nomeEmpresa"],
+                d["cursos"],
+                d["remuneracao"],
+                d["local"],
+                d["requisitoEscolaridade"],
+                d["periodo"],
+                d["descricaoVaga"],
+                d["informacoesAdicionais"]);
+            vagas.add(vaga);
+          }
+        }
       });
       return vagas;
     } on FirebaseException catch (e) {
