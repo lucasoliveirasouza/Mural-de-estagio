@@ -22,7 +22,7 @@ class _PerfilViewState extends State<PerfilView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sobre"),
+        title: Text("Perfil"),
       ),
       body: Container(
         padding: EdgeInsets.all(15),
