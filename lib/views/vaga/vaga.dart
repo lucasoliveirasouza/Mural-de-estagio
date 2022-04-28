@@ -54,26 +54,47 @@ class _VagaViewState extends State<VagaView> {
                 title: "Remuneração:",
                 valor: "RS " + widget.vaga.remuneracao.toString(),
               ),
-              ListTile(
-                title:
-                    Text("Remuneração: " + widget.vaga.remuneracao.toString()),
+              SizedBox(
+                height: 5,
               ),
-              ListTile(
-                title: Text("Local: " + widget.vaga.local),
+              LinhaTabela(
+                title: "Local:",
+                valor: widget.vaga.local,
               ),
-              ListTile(
-                title:
-                    Text("Escolaridade: " + widget.vaga.requisitoEscolaridade),
+              SizedBox(
+                height: 5,
               ),
-              ListTile(
-                title: Text("Turno: " + widget.vaga.periodo),
+              LinhaTabela(
+                title: "Escolaridade:",
+                valor: widget.vaga.requisitoEscolaridade,
               ),
-              ListTile(
-                title: Text("Descrição da vaga: " + widget.vaga.descricaoVaga),
+              SizedBox(
+                height: 5,
               ),
-              ListTile(
-                title: Text("Informações adicionais: " +
-                    widget.vaga.informacoesAdicionais),
+              LinhaTabela(
+                title: "Escolaridade:",
+                valor: widget.vaga.requisitoEscolaridade,
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              LinhaTabela(
+                title: "Turno:",
+                valor: widget.vaga.periodo,
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              LinhaTabela(
+                title: "Descrição da vaga:",
+                valor: widget.vaga.descricaoVaga,
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              LinhaTabela(
+                title: "Informações adicionais:",
+                valor: widget.vaga.informacoesAdicionais,
               ),
               SizedBox(
                 height: 15,
