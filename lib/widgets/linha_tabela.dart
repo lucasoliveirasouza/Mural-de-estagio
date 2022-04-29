@@ -16,7 +16,11 @@ class LinhaTabela extends StatelessWidget {
         children: [
           TableRow(children: [
             Container(
-              padding: EdgeInsets.only(right: 5),
+              padding: EdgeInsets.only(
+                right: 5,
+                top: 7,
+                bottom: 7,
+              ),
               child: Text(
                 title,
                 textAlign: TextAlign.right,
@@ -33,7 +37,7 @@ class LinhaTabela extends StatelessWidget {
                 valor,
                 textAlign: TextAlign.left,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Colors.deepPurple,
                 ),
               ),

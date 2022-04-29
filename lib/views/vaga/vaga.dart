@@ -34,7 +34,7 @@ class _VagaViewState extends State<VagaView> {
                 ),
               ),
               SizedBox(
-                height: 15,
+                height: 25,
               ),
               LinhaTabela(
                 title: "Empresa:",
@@ -72,13 +72,6 @@ class _VagaViewState extends State<VagaView> {
                 height: 5,
               ),
               LinhaTabela(
-                title: "Escolaridade:",
-                valor: widget.vaga.requisitoEscolaridade,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              LinhaTabela(
                 title: "Turno:",
                 valor: widget.vaga.periodo,
               ),
@@ -97,7 +90,7 @@ class _VagaViewState extends State<VagaView> {
                 valor: widget.vaga.informacoesAdicionais,
               ),
               SizedBox(
-                height: 15,
+                height: 20,
               ),
               BotaoPadrao(
                 titulo: "Candidatar",

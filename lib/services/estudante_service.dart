@@ -83,4 +83,20 @@ class EstudanteService {
     }
     return "Editado com sucesso!";
   }
+
+  String? candidatarVaga(String idEstudante, String idVaga, String idEmpresa) {
+    try {
+      CollectionReference estudantes =
+          FirebaseFirestore.instance.collection('interesses');
+      estudantes.add({
+        'estudante': idEstudante,
+        'vaga': idVaga,
+        'empresa': idEmpresa,
+      });
+
+      return "Cadastrado com sucesso!";
+    } on FirebaseException catch (e) {
+      return e.toString();
+    }
+  }
 }
