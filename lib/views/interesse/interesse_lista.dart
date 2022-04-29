@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/services/estudante_service.dart';
 import 'package:mural_estagio/services/usuario_service.dart';
 
 class InteresseListaView extends StatefulWidget {
@@ -11,6 +12,7 @@ class InteresseListaView extends StatefulWidget {
 class _InteresseListaViewState extends State<InteresseListaView> {
   @override
   Widget build(BuildContext context) {
+    Future<List<String?>?> futureList = EstudanteService().getVagas();
     if (UsuarioService().getUsuario()?.funcao == "Estudante") {
       return Scaffold(
         appBar: AppBar(
@@ -18,6 +20,20 @@ class _InteresseListaViewState extends State<InteresseListaView> {
         ),
         body: Container(
           padding: EdgeInsets.all(15),
+          child: FutureBuilder(
+              future: futureList,
+              builder: (BuildContext context,
+                  AsyncSnapshot<List<String?>?> snapshot) {
+                return ListView.builder(
+                  itemCount: snapshot.data?.length ?? 0,
+                  shrinkWrap: true,
+                  itemBuilder: ((context, index) {
+                    return ListTile(
+                      title: Text(snapshot.data![index]!),
+                    );
+                  }),
+                );
+              }),
         ),
       );
     } else {
