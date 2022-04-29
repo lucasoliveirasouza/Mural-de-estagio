@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/util/constantes.dart';
 
 class LinhaTabela extends StatelessWidget {
   String title;
@@ -29,7 +30,7 @@ class LinhaTabela extends StatelessWidget {
                   fontSize: 16,
                 ),
               ),
-              color: Colors.deepPurple,
+              color: corPadrao,
             ),
             Container(
               padding: EdgeInsets.only(left: 5),
@@ -38,7 +39,7 @@ class LinhaTabela extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontSize: 14,
-                  color: Colors.deepPurple,
+                  color: corPadrao,
                 ),
               ),
             )

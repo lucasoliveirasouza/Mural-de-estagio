@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mural_estagio/util/constantes.dart';
 
 class SobreView extends StatefulWidget {
   const SobreView({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _SobreViewState extends State<SobreView> {
         title: Text("Sobre"),
       ),
       body: Container(
-        color: Colors.deepPurple.shade50,
+        color: corPadrao.shade50,
         padding: EdgeInsets.only(top: 150),
         child: ListView(
           children: [
@@ -31,7 +32,7 @@ class _SobreViewState extends State<SobreView> {
               child: Text(
                 "Mural de estágios",
                 style: TextStyle(
-                  color: Colors.deepPurple,
+                  color: corPadrao,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
@@ -44,7 +45,7 @@ class _SobreViewState extends State<SobreView> {
               child: Text(
                 "Desenvolvido por Lucas Oliveira:",
                 style: TextStyle(
-                  color: Colors.deepPurple,
+                  color: corPadrao,
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                 ),

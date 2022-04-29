@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mural_estagio/models/vaga.dart';
 import 'package:mural_estagio/services/vaga_service.dart';
+import 'package:mural_estagio/util/constantes.dart';
 import 'package:mural_estagio/views/vaga/vaga.dart';
 import 'package:mural_estagio/views/vaga/vaga_cadastro.dart';
 
@@ -41,7 +42,7 @@ class _VagaListaViewState extends State<VagaListaView> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.deepPurple.shade50,
+                            color: corPadrao.shade50,
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
                           padding: EdgeInsets.all(8),
@@ -59,7 +60,7 @@ class _VagaListaViewState extends State<VagaListaView> {
                                 snapshot.data![index]!.cursos,
                                 style: TextStyle(
                                     fontSize: 21,
-                                    color: Colors.deepPurple,
+                                    color: corPadrao,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -73,7 +74,7 @@ class _VagaListaViewState extends State<VagaListaView> {
                                         .toString(),
                                 style: TextStyle(
                                     fontSize: 18,
-                                    color: Colors.deepPurple,
+                                    color: corPadrao,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -85,7 +86,7 @@ class _VagaListaViewState extends State<VagaListaView> {
                                 "Local: " + snapshot.data![index]!.local,
                                 style: TextStyle(
                                     fontSize: 18,
-                                    color: Colors.deepPurple,
+                                    color: corPadrao,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -97,7 +98,7 @@ class _VagaListaViewState extends State<VagaListaView> {
                                 "Turno: " + snapshot.data![index]!.periodo,
                                 style: TextStyle(
                                     fontSize: 18,
-                                    color: Colors.deepPurple,
+                                    color: corPadrao,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -109,7 +110,7 @@ class _VagaListaViewState extends State<VagaListaView> {
                                 "VER MAIS",
                                 style: TextStyle(
                                   fontSize: 20,
-                                  color: Colors.deepPurple,
+                                  color: corPadrao,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
