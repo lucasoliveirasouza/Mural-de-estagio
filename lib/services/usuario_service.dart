@@ -6,6 +6,12 @@ import 'package:mural_estagio/services/empregador_service.dart';
 import 'package:mural_estagio/services/estudante_service.dart';
 
 class UsuarioService {
+  static Usuario? usuarioPadrao;
+
+  Usuario? getUsuario() {
+    return usuarioPadrao;
+  }
+
   String? cadastrarUsuario(Usuario usuario) {
     try {
       print("CADASTRADO");
@@ -19,12 +25,14 @@ class UsuarioService {
         'telefone': usuario.telefone,
       });
 
-      if(usuario.funcao == "Estudante"){
-        Estudante estudante = Estudante("", usuario.nome, usuario.email, "", usuario.funcao, usuario.endereco, usuario.telefone, "", "", "", "");
-        EstudanteService().cadastrarUsuario(estudante);
-      }else if(usuario.funcao == "Empregador"){
-        Empregador empregador = Empregador("", usuario.nome, usuario.email, "", usuario.funcao, usuario.endereco, usuario.telefone, "");
-        EmpregadorService().cadastrarUsuario(empregador);
+      if (usuario.funcao == "Estudante") {
+        Estudante estudante = Estudante("", usuario.nome, usuario.email, "",
+            usuario.funcao, usuario.endereco, usuario.telefone, "");
+        EstudanteService().cadastrarEstudante(estudante);
+      } else if (usuario.funcao == "Empregador") {
+        Empregador empregador = Empregador("", usuario.nome, usuario.email, "",
+            usuario.funcao, usuario.endereco, usuario.telefone, "");
+        EmpregadorService().cadastrarEmpregador(empregador);
       }
       return "Cadastrado com sucesso!";
     } on FirebaseException catch (e) {
@@ -33,10 +41,10 @@ class UsuarioService {
   }
 
   Future<Usuario?> getUser(email) async {
-    Usuario usuario = Usuario("", "", "", "", "","","");
-    try{
+    Usuario usuario = Usuario("", "", "", "", "", "", "");
+    try {
       QuerySnapshot snapshot =
-      await FirebaseFirestore.instance.collection('usuarios').get();
+          await FirebaseFirestore.instance.collection('usuarios').get();
       snapshot.docs.forEach((d) {
         if (d['email'] == email) {
           usuario.setId(d.id);
@@ -47,9 +55,10 @@ class UsuarioService {
           usuario.setTelefone(d['telefone']);
         }
       });
-    }on FirebaseException catch (e) {
-       print(e.toString());
+    } on FirebaseException catch (e) {
+      print(e.toString());
     }
+    usuarioPadrao = usuario;
     return usuario;
   }
 }

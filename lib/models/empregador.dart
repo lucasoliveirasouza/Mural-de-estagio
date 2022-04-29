@@ -1,7 +1,10 @@
 import 'package:mural_estagio/models/usuario.dart';
+import 'package:mural_estagio/models/vaga.dart';
 
 class Empregador extends Usuario {
   late String _descricaoEmpresa;
+
+  List<Vaga> vagas = [];
 
   Empregador(String id, String nome, String email, String senha, String funcao,
       String endereco, String telefone, descricaoEmpresa)
@@ -13,5 +16,9 @@ class Empregador extends Usuario {
 
   void setDescricaoEmpresa(String value) {
     _descricaoEmpresa = value;
+  }
+
+  void adicionarVaga(Vaga vaga){
+    vagas.add(vaga);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mural_estagio/services/auth_service.dart';
+import 'package:mural_estagio/util/constantes.dart';
 import 'package:mural_estagio/views/auth/cadastrar_usuario.dart';
 import 'package:mural_estagio/widgets/form_field_padrao.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,7 @@ class _LoginViewState extends State<LoginView> {
             SizedBox(
               width: 128,
               height: 128,
-              child: Image.asset("assets/images/estagio.png"),
+              child: Image.asset("assets/images/diplomado.png"),
             ),
             SizedBox(
               height: 20,
@@ -39,7 +40,7 @@ class _LoginViewState extends State<LoginView> {
                 "Bem-vindo!",
                 style: TextStyle(
                   fontSize: 25,
-                  color: Colors.deepPurple,
+                  color: corPadrao,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -64,6 +65,11 @@ class _LoginViewState extends State<LoginView> {
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    new Radius.circular(10.0),
+                  ),
                 ),
               ),
             ),
