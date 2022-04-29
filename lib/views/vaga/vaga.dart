@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mural_estagio/models/vaga.dart';
+import 'package:mural_estagio/services/estudante_service.dart';
+import 'package:mural_estagio/services/usuario_service.dart';
 import 'package:mural_estagio/widgets/botao_padrao.dart';
 import 'package:mural_estagio/widgets/linha_tabela.dart';
 
@@ -94,7 +96,18 @@ class _VagaViewState extends State<VagaView> {
               ),
               BotaoPadrao(
                 titulo: "Candidatar",
-                onTap: () {},
+                onTap: () {
+                  EstudanteService()
+                      .getEstudante(UsuarioService().getUsuario()?.email)
+                      .then((value) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(EstudanteService()
+                            .candidatarVaga(value?.id, widget.vaga.id,
+                                widget.vaga.idEmpresa)
+                            .toString())));
+                    Navigator.of(context).pop();
+                  });
+                },
               ),
             ],
           )),

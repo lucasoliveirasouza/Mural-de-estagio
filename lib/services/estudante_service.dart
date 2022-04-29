@@ -94,7 +94,7 @@ class EstudanteService {
         'empresa': idEmpresa,
       });
 
-      return "Cadastrado com sucesso!";
+      return "Você se canditatou a essa vaga";
     } on FirebaseException catch (e) {
       return e.toString();
     }
