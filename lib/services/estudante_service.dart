@@ -99,4 +99,19 @@ class EstudanteService {
       return e.toString();
     }
   }
+
+  Future<List<String?>?> getVagas() async {
+    List<String> vagas = [];
+    try {
+      QuerySnapshot snapshot =
+          await FirebaseFirestore.instance.collection('interesses').get();
+      snapshot.docs.forEach((d) {
+        vagas.add(d["vaga"]);
+      });
+      return vagas;
+    } on FirebaseException catch (e) {
+      print(e.toString());
+    }
+    return vagas;
+  }
 }

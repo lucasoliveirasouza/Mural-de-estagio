@@ -36,10 +36,7 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
         padding: EdgeInsets.all(15),
         child: ListView(
           children: [
-            FormFieldPadrao(
-                controle: cursos,
-                title: "Cursos para a vaga"
-            ),
+            FormFieldPadrao(controle: cursos, title: "Cursos para a vaga"),
             SizedBox(
               height: 10,
             ),
@@ -71,9 +68,8 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
             SizedBox(
               height: 10,
             ),
-
             TextFormField(
-              maxLines: 6,
+              maxLines: 4,
               controller: descricaoVaga,
               decoration: InputDecoration(
                 labelText: "Descrição da vaga",
@@ -135,8 +131,7 @@ class _VagaCadastroViewState extends State<VagaCadastroView> {
                         requisitoEscolaridade.text,
                         periodo.text,
                         descricaoVaga.text,
-                        informacoesAdicionais.text
-                    );
+                        informacoesAdicionais.text);
 
                     VagaService().cadastrarVaga(vaga);
                     ScaffoldMessenger.of(context).showSnackBar(

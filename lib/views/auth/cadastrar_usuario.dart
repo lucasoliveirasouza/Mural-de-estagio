@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mural_estagio/models/usuario.dart';
 import 'package:mural_estagio/services/auth_service.dart';
 import 'package:mural_estagio/services/usuario_service.dart';
+import 'package:mural_estagio/util/constantes.dart';
 import 'package:mural_estagio/widgets/botao_padrao.dart';
 import 'package:mural_estagio/widgets/form_field_padrao.dart';
 import 'package:provider/provider.dart';
@@ -37,7 +38,7 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
             SizedBox(
               width: 128,
               height: 128,
-              child: Image.asset("assets/images/estagio.png"),
+              child: Image.asset("assets/images/diplomado.png"),
             ),
             SizedBox(
               height: 15,
@@ -47,7 +48,7 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
                 "Realizar cadastro",
                 style: TextStyle(
                   fontSize: 25,
-                  color: Colors.deepPurple,
+                  color: corPadrao,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -135,7 +136,6 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
                   );
                 }).toList(),
               ),
-
             ),
             SizedBox(
               height: 15,
@@ -158,15 +158,14 @@ class _CadastrarUsuarioViewState extends State<CadastrarUsuarioView> {
               titulo: "Cadastrar",
               onTap: () {
                 registrar();
-                Usuario usuario = Usuario("", nome.text, email.text,
-                    senha.text, funcao, endereco.text, telefone.text);
+                Usuario usuario = Usuario("", nome.text, email.text, senha.text,
+                    funcao, endereco.text, telefone.text);
                 print(usuario);
                 UsuarioService().cadastrarUsuario(usuario);
 
                 Navigator.of(context).pop();
               },
             ),
-
             SizedBox(
               height: 10,
             ),
