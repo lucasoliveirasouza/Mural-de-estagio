@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mural_estagio/models/curriculo.dart';
 import 'package:mural_estagio/models/estudante.dart';
+import 'package:mural_estagio/models/vaga.dart';
 import 'package:mural_estagio/services/curriculo_service.dart';
 import 'package:mural_estagio/services/usuario_service.dart';
 
@@ -85,7 +86,7 @@ class EstudanteService {
     return "Editado com sucesso!";
   }
 
-  String? candidatarVaga(String emailEstudante, String idVaga, String idEmpresa) {
+  String? candidatarVaga(String emailEstudante, String idVaga, String idEmpresa, String cursos,String nomeEmpresa, double remuneracao) {
     try {
       CollectionReference estudantes =
           FirebaseFirestore.instance.collection('interesses');
@@ -93,6 +94,9 @@ class EstudanteService {
         'estudante': emailEstudante,
         'vaga': idVaga,
         'empresa': idEmpresa,
+        'cursos': cursos,
+        'nomeEmpresa': nomeEmpresa,
+        'remuneracao': remuneracao,
       });
 
       return "Você se canditatou a essa vaga";
@@ -101,14 +105,15 @@ class EstudanteService {
     }
   }
 
-  Future<List<String?>?> getVagas() async {
-    List<String> vagas = [];
+  Future<List<Vaga?>?> getVagas() async {
+    List<Vaga> vagas = [];
     try {
       QuerySnapshot snapshot =
       await FirebaseFirestore.instance.collection('interesses').get();
       snapshot.docs.forEach((d) {
         if(UsuarioService().getUsuario()?.email == d["estudante"]){
-            vagas.add(d["vaga"]);
+          Vaga vaga = Vaga(d["vaga"], d["empresa"], d["nomeEmpresa"], d["cursos"], d["remuneracao"], "", "", "", "", "");
+            vagas.add(vaga);
         }
 
       });

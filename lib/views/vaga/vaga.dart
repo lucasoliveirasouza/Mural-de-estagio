@@ -104,7 +104,7 @@ class _VagaViewState extends State<VagaView> {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text(EstudanteService()
                             .candidatarVaga(value?.email, widget.vaga.id,
-                                widget.vaga.idEmpresa)
+                                widget.vaga.idEmpresa,widget.vaga.cursos,widget.vaga.nomeEmpresa,widget.vaga.remuneracao)
                             .toString())));
                     Navigator.of(context).pop();
                   });
