@@ -13,6 +13,7 @@ class _InteresseListaViewState extends State<InteresseListaView> {
   @override
   Widget build(BuildContext context) {
     Future<List<String?>?> futureList = EstudanteService().getVagas();
+
     if (UsuarioService().getUsuario()?.funcao == "Estudante") {
       return Scaffold(
         appBar: AppBar(
@@ -29,7 +30,7 @@ class _InteresseListaViewState extends State<InteresseListaView> {
                   shrinkWrap: true,
                   itemBuilder: ((context, index) {
                     return ListTile(
-                      title: Text(snapshot.data![index]!),
+                      title: Text(snapshot.data![index]!.toString()),
                     );
                   }),
                 );

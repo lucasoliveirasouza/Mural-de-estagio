@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mural_estagio/models/curriculo.dart';
 import 'package:mural_estagio/models/estudante.dart';
 import 'package:mural_estagio/services/curriculo_service.dart';
+import 'package:mural_estagio/services/usuario_service.dart';
 
 class EstudanteService {
   Future<String?> cadastrarEstudante(Estudante estudante) async {
@@ -84,12 +85,12 @@ class EstudanteService {
     return "Editado com sucesso!";
   }
 
-  String? candidatarVaga(String idEstudante, String idVaga, String idEmpresa) {
+  String? candidatarVaga(String emailEstudante, String idVaga, String idEmpresa) {
     try {
       CollectionReference estudantes =
           FirebaseFirestore.instance.collection('interesses');
       estudantes.add({
-        'estudante': idEstudante,
+        'estudante': emailEstudante,
         'vaga': idVaga,
         'empresa': idEmpresa,
       });
@@ -104,11 +105,15 @@ class EstudanteService {
     List<String> vagas = [];
     try {
       QuerySnapshot snapshot =
-          await FirebaseFirestore.instance.collection('interesses').get();
+      await FirebaseFirestore.instance.collection('interesses').get();
       snapshot.docs.forEach((d) {
-        vagas.add(d["vaga"]);
+        if(UsuarioService().getUsuario()?.email == d["estudante"]){
+            vagas.add(d["vaga"]);
+        }
+
       });
       return vagas;
+
     } on FirebaseException catch (e) {
       print(e.toString());
     }
