@@ -16,6 +16,8 @@ class _InteresseListaViewState extends State<InteresseListaView> {
         appBar: AppBar(
           title: Text("Interesses"),
         ),
+        body: Container(
+        ),
       );
     } else {
       return Scaffold(
