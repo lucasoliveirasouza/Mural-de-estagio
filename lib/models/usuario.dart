@@ -1,8 +1,8 @@
 class Usuario {
+  late String _id, _nome, _email, _senha, _funcao, _endereco, _telefone;
 
-  late String _id, _nome, _email, _senha, _funcao, _endereco,_telefone;
-
-  Usuario(this._id,this._nome, this._email, this._senha, this._funcao, this._endereco,this._telefone);
+  Usuario(this._id, this._nome, this._email, this._senha, this._funcao,
+      this._endereco, this._telefone);
 
   get id => _id;
 
@@ -45,6 +45,4 @@ class Usuario {
   void setTelefone(value) {
     _telefone = value;
   }
-
-
 }

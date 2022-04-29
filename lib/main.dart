@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mural_estagio/services/auth_service.dart';
+import 'package:mural_estagio/util/constantes.dart';
 import 'package:mural_estagio/views/auth/auth_check.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       title: 'Mural de estágio',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        primarySwatch: corPadrao,
       ),
       home: AuthCheck(),
     );
