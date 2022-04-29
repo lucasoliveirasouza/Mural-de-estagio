@@ -17,6 +17,7 @@ class _InteresseListaViewState extends State<InteresseListaView> {
           title: Text("Interesses"),
         ),
         body: Container(
+          padding: EdgeInsets.all(15),
         ),
       );
     } else {
